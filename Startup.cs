@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Feature_Tree.DataRepository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Protocols;
+using Feature_Tree.IDataRepository;
 
 namespace Feature_Tree
 {
@@ -30,7 +34,14 @@ namespace Feature_Tree
         {
             // Add framework services.
             services.AddMvc();
-        }
+
+            // Register application services.
+            services.AddScoped<IFeatureTreeRepository, FeatureTreeRepository>();
+            services.AddDbContext<FeatureTreeContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("Jared_LocalDB")));
+        
+
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
