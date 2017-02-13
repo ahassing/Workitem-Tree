@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Feature Tree", "Feature Tree.xproj", "{8CB676E4-1803-4335-A905-DBD0F2169A48}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Feature Tree DB", "Feature Tree DB\Feature Tree DB.sqlproj", "{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{8CB676E4-1803-4335-A905-DBD0F2169A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CB676E4-1803-4335-A905-DBD0F2169A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CB676E4-1803-4335-A905-DBD0F2169A48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDF95F4-9D8D-4727-B90F-4653BEB2945F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
