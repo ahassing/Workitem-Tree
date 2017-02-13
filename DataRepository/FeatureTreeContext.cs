@@ -8,13 +8,13 @@ using Microsoft.IdentityModel.Protocols;
 
 namespace Feature_Tree.DataRepository
 {
-    public partial class FeatureTreeContext : DbContext
-    {
-        public virtual DbSet<Issue> Issues { get; set; }
+//    public partial class FeatureTreeContext : DbContext
+//    {
+//        public virtual DbSet<Issue> Issues { get; set; }
 
-        public FeatureTreeContext(DbContextOptions<FeatureTreeContext> options)
-    : base(options)
-{ }
+//        public FeatureTreeContext(DbContextOptions<FeatureTreeContext> options)
+//    : base(options)
+//{ }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -27,5 +27,5 @@ namespace Feature_Tree.DataRepository
  
         //}
 
-    }
+    //}
 }

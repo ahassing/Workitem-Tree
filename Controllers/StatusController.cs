@@ -6,27 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using Feature_Tree.Models;
 using Feature_Tree.IDataRepository;
 
-
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Feature_Tree.Controllers
 {
     [Route("api/[controller]")]
-    public class NodeController : Controller
+    public class StatusController : Controller
     {
-        private readonly IIssueRepository _featureTreeRepository;
 
-        public NodeController(IIssueRepository featureTreeRepository)
+        private readonly IStatusRepository _BTfeatureTreeRepository;
+
+        public StatusController(IStatusRepository BTfeatureTreeRepository)
         {
-            _featureTreeRepository = featureTreeRepository;
+            _BTfeatureTreeRepository = BTfeatureTreeRepository;
         }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Issue> Get()
+        public IEnumerable<Status> Get()
         {
-            var issues = _featureTreeRepository.ListAll();
 
-            return (issues);
+            return _BTfeatureTreeRepository.ListAll();
         }
 
         // GET api/values/5
