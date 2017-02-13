@@ -1,4 +1,21 @@
-# Welcome to ASP.NET Core
+# BuilderTrend Feature Tree
+
+## Project Dependencies
+* .NET Core V1.0.1 SDK
+* .NET Core V1.0.1 VS 2015 Tooling
+![Mdcoreversion](mdcoreversion.png)
+* Node and NPM for Angular package management
+* Typescript 2.0 (Will get errors 'required' error messages if not installed. Restart Visual Studio after install)
+
+## Project Notes
+* AppSettings.json
+	* Contains Database Connection Settings. Must update to your localdb settings
+* Package.json
+    * Contains a list of all NPM packages that are used in the project. Pulls in all of the Angular Components.
+    *  
+
+
+# .NET Core Documentation
 
 We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
 
