@@ -3,7 +3,7 @@
 ## Project Dependencies
 * .NET Core V1.0.1 SDK
 * .NET Core V1.0.1 VS 2015 Tooling
-![Mdcoreversion](mdcoreversion.png)
+![Mdcoreversion](Images/Markdown/mdcoreversion.png)
 * Node and NPM for Angular package management
 * Typescript 2.0 (Will get errors 'required' error messages if not installed. Restart Visual Studio after install)
 
