@@ -36,7 +36,7 @@ namespace Feature_Tree
             services.AddMvc();
 
             // Register application services.
-            services.AddScoped<IFeatureTreeRepository, FeatureTreeRepository>();
+            services.AddScoped<IIssueRepository, IssueRepository>();
             services.AddDbContext<FeatureTreeContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("Jared_LocalDB")));
         

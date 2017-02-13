@@ -6,7 +6,7 @@ using Feature_Tree.Models;
 
 namespace Feature_Tree.IDataRepository
 {
-    public interface IFeatureTreeRepository
+    public interface IIssueRepository
     {
         IEnumerable<Issue> ListAll();
     }

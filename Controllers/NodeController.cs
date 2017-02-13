@@ -14,9 +14,9 @@ namespace Feature_Tree.Controllers
     [Route("api/[controller]")]
     public class NodeController : Controller
     {
-        private readonly IFeatureTreeRepository _featureTreeRepository;
+        private readonly IIssueRepository _featureTreeRepository;
 
-        public NodeController(IFeatureTreeRepository featureTreeRepository)
+        public NodeController(IIssueRepository featureTreeRepository)
         {
             _featureTreeRepository = featureTreeRepository;
         }

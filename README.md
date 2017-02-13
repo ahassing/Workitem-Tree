@@ -1,5 +1,6 @@
 # BuilderTrend Feature Tree
 
+
 ## Project Dependencies
 * .NET Core V1.0.1 SDK
 * .NET Core V1.0.1 VS 2015 Tooling
@@ -12,7 +13,14 @@
 	* Contains Database Connection Settings. Must update to your localdb settings
 * Package.json
     * Contains a list of all NPM packages that are used in the project. Pulls in all of the Angular Components.
-    *  
+    * You will most likely get a Dependencies - not installed message after restoring the NPM Packages.
+        * This is caused by fsevents which will only install on Mac. It is an optional dependency so it does not matter.
+![Fsevents](Images/Markdown/fsevents.png)
+* Project.json
+    * The project.json file contains all the .net core project information as well as all of the nuget dependencies. If you had a package via nuget it will be displayed in this file.
+* ClientApp
+    * The Angular stuff goes here.
+* Still Working on the database stuff.
 
 
 # .NET Core Documentation

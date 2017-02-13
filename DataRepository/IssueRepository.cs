@@ -7,10 +7,10 @@ using Feature_Tree.Models;
 
 namespace Feature_Tree.DataRepository
 {
-    public class FeatureTreeRepository : IFeatureTreeRepository
+    public class IssueRepository : IIssueRepository
     {
         private readonly FeatureTreeContext _dbContext;
-        public FeatureTreeRepository(FeatureTreeContext dbContext)
+        public IssueRepository(FeatureTreeContext dbContext)
         {
             _dbContext = dbContext;
         }
