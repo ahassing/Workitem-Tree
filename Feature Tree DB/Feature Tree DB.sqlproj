@@ -61,6 +61,7 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Issues.sql" />
@@ -68,5 +69,13 @@
     <Build Include="dbo\Tables\Status.sql" />
     <Build Include="dbo\Tables\StatusCategory.sql" />
     <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Update.sql" />
+    <Build Include="dbo\Tables\Projects.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Projects_Update.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Projects_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Project_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Select_ByProject.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Insert.sql" />
   </ItemGroup>
 </Project>
