@@ -36,6 +36,11 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
 2. Select the local DB Project as the source and Azure DB as target.
 3. Steps 4 & 5 above
 
+## API Routes Currently Working
+* Issues: GET api/issues/\{Id}
+
+I gave up on Entity Framework for now. It just was not working. Now that I got stored procedure wired up it will be easy to wire up and create the rest.
+
 # .NET Core Documentation
 
 We've made some big updates in this release, so it’s **important** that you spend a few minutes to learn what’s new.
