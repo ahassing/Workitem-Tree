@@ -62,6 +62,9 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedure" />
+    <Folder Include="dbo\Scripts" />
+    <Folder Include="dbo\Stored Procedure\Issues CRUD" />
+    <Folder Include="dbo\Stored Procedure\Projects CRUD" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Issues.sql" />
@@ -69,5 +72,13 @@
     <Build Include="dbo\Tables\Status.sql" />
     <Build Include="dbo\Tables\StatusCategory.sql" />
     <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Scripts\CreateProjectsTable.sql" />
+    <Build Include="dbo\Stored Procedure\Issues CRUD\insert Issue.sql" />
+    <Build Include="dbo\Stored Procedure\Issues CRUD\select issue by project.sql" />
+    <Build Include="dbo\Stored Procedure\Issues CRUD\select issue.sql" />
+    <Build Include="dbo\Stored Procedure\Issues CRUD\update issue.sql" />
+    <Build Include="dbo\Stored Procedure\Projects CRUD\insert Project.sql" />
+    <Build Include="dbo\Stored Procedure\Projects CRUD\select project.sql" />
+    <Build Include="dbo\Stored Procedure\Projects CRUD\update project.sql" />
   </ItemGroup>
 </Project>
