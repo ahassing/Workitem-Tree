@@ -20,8 +20,21 @@
     * The project.json file contains all the .net core project information as well as all of the nuget dependencies. If you had a package via nuget it will be displayed in this file.
 * ClientApp
     * The Angular stuff goes here.
-* Still Working on the database stuff.
 
+## SQL Source Control
+Schema Changes (When connected to jmknust-proj.database.windows.net)
+#### Scenerio 1 - Making a change in Microsoft Management Studio
+1. Makes changes to Azure DB
+2. Right click on DB Project and select 'Schema Compare'
+![Md D B1](Images/Markdown/mdDB1.png)
+3. Select the azure DB as your source and your local DB project as the target and run the comparison
+![Md D B2](Images/Markdown/mdDB2.png)
+4. It should display all of the changes you made.
+5. Click on the Update button to Apply the schema changes to the Project files
+#### Scenerio 2 - Making a change in visual studio and applying to Azure DB
+1. Steps 1 & 2 above
+2. Select the local DB Project as the source and Azure DB as target.
+3. Steps 4 & 5 above
 
 # .NET Core Documentation
 
