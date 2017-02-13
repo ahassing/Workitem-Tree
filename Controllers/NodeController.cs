@@ -24,7 +24,7 @@ namespace Feature_Tree.Controllers
         [HttpGet]
         public IEnumerable<Issue> Get()
         {
-            ivar issues = _featureTreeRepository.ListAll();
+            var issues = _featureTreeRepository.ListAll();
 
             return (issues);
         }
