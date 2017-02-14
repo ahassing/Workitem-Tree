@@ -39,6 +39,7 @@ namespace Feature_Tree
             services.AddScoped<IIssuesRepository, IssuesRepository>();
             services.AddScoped<IStatusRepository, StatusRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
             services.AddDbContext<BTFeatureTreeContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Jared_LocalDB")));
         

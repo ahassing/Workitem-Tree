@@ -79,5 +79,7 @@
     <Build Include="dbo\Stored Procedures\upProc_Issues_Insert.sql" />
     <Build Include="dbo\Stored Procedures\upProc_Users_Select.sql" />
     <Build Include="dbo\Stored Procedures\upProc_Status_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_StatusCategory_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Priority_Select.sql" />
   </ItemGroup>
 </Project>
