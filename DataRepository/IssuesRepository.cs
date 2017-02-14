@@ -30,6 +30,20 @@ namespace Feature_Tree.DataRepository
                     .FromSql("upProc_Issues_Select @IssueId", issueId);
         }
 
+        public Issues CreateIssue(Issues value)
+        {
+            //try {
+                _dbContext.Issues
+                    .FromSql("upProc_Issue_Insert {0} {1} {3} {4} {5} {6} {7} {8}" 
+                    ,value.IssueTitle, value.IssueDescription,value.IssueStatusId,value.IssuePriorityId,
+                    value.IssueCreatorUserId,value.IssueAssignedUserId,value.DependentOn,value.IssueProjectId);
+            //}
+            //catch (Exception e)
+            //{
+
+            //}
+            return null;
+        }
 
     }
 }

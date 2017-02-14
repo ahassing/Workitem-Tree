@@ -12,7 +12,7 @@ namespace Feature_Tree.DataRepository
         public virtual DbSet<Projects> Projects { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<StatusCategory> StatusCategory { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -119,7 +119,7 @@ namespace Feature_Tree.DataRepository
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId)
                     .HasName("PK_Users");

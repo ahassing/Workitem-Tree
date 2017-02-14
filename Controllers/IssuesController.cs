@@ -38,8 +38,9 @@ namespace Feature_Tree.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Issues value)
         {
+            _BTfeatureTreeRepository.CreateIssue(value);
         }
 
         // PUT api/values/5
@@ -48,10 +49,5 @@ namespace Feature_Tree.Controllers
         {
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

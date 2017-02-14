@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Feature_Tree.Models
 {
-    public partial class Users
+    public partial class User
     {
-        public Users()
+        public User()
         {
             IssuesIssueAssignedUser = new HashSet<Issues>();
             IssuesIssueCreatorUser = new HashSet<Issues>();

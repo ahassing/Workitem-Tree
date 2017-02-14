@@ -3,9 +3,8 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE upProc_Issues_Insert
+CREATE PROCEDURE [dbo].[upProc_Issues_Insert]
 	-- Add the parameters for the stored procedure here
-	@IssueId int,
 	@IssueTitle Nvarchar(500),
 	@IssueDescription  nvarchar(Max),
 	@IssueStatusId int,
@@ -20,7 +19,7 @@ BEGIN
 
 
 	INSERT [dbo].[Issues] 
-		(	[IssueId], 
+		( 
 			[IssueTitle], 
 			[IssueDescription], 
 			[IssueStatusId], 
@@ -33,7 +32,7 @@ BEGIN
 			[IssueProjectId]) 
 			
 	VALUES 
-		(	@IssueId, 
+		( 
 			@IssueTitle, 
 			@IssueDescription, 
 			@IssueStatusId, 

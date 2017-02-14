@@ -77,5 +77,7 @@
     <Build Include="dbo\Stored Procedures\upProc_Issues_Select_ByProject.sql" />
     <Build Include="dbo\Stored Procedures\upProc_Issues_Select.sql" />
     <Build Include="dbo\Stored Procedures\upProc_Issues_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Users_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Status_Select.sql" />
   </ItemGroup>
 </Project>

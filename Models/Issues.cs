@@ -19,9 +19,9 @@ namespace Feature_Tree.Models
 
         public virtual Issues DependentOnNavigation { get; set; }
         public virtual ICollection<Issues> InverseDependentOnNavigation { get; set; }
-        public virtual Users IssueAssignedUser { get; set; }
-        public virtual Users IssueCreatorUser { get; set; }
-        public virtual Users IssueOwnerUser { get; set; }
+        public virtual User IssueAssignedUser { get; set; }
+        public virtual User IssueCreatorUser { get; set; }
+        public virtual User IssueOwnerUser { get; set; }
         public virtual Priority IssuePriority { get; set; }
         public virtual Projects IssueProject { get; set; }
         public virtual Status IssueStatus { get; set; }

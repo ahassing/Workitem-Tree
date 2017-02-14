@@ -21,7 +21,13 @@ namespace Feature_Tree.DataRepository
             //return _dbContext.Status.AsEnumerable();
 
 			return _dbContext.Status
-                    .FromSql("usp_GetAllCategories").ToList();
+                    .FromSql("upProc_Status_Select").ToList();
+        }
+
+        public Status GetStatus (int statusId)
+        {
+            return _dbContext.Status
+                .FromSql("upProc_Status_Select {0}", statusId).First();
         }
 
     }

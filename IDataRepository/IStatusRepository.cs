@@ -8,6 +8,7 @@ namespace Feature_Tree.IDataRepository
 {
     public interface IStatusRepository
     {
-       IEnumerable<Status> ListAll();
+        IEnumerable<Status> ListAll();
+        Status GetStatus(int statusId);
     }
 }

@@ -11,29 +11,27 @@ using Feature_Tree.IDataRepository;
 namespace Feature_Tree.Controllers
 {
     [Route("api/[controller]")]
-    public class StatusController : Controller
+    public class UserController : Controller
     {
+        private readonly IUserRepository _BTfeatureTreeRepository;
 
-        private readonly IStatusRepository _BTfeatureTreeRepository;
-
-        public StatusController(IStatusRepository BTfeatureTreeRepository)
+        public UserController(IUserRepository BTfeatureTreeRepository)
         {
             _BTfeatureTreeRepository = BTfeatureTreeRepository;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Status> Get()
+        public IEnumerable<User> Get()
         {
-
             return _BTfeatureTreeRepository.ListAll();
         }
 
-        // GET api/values/5
+        // GET api/values/851B90E1-36AD-4C73-ADC7-9C4A1745DA54
         [HttpGet("{id}")]
-        public Status Get(int id)
+        public User Get(Guid id)
         {
-            return _BTfeatureTreeRepository.GetStatus(id);
+            return _BTfeatureTreeRepository.GetUser(id);
         }
 
         // POST api/values
