@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Feature_Tree.Models
 {
-    public partial class Issues
+    public partial class Issue
     {
         public int IssueId { get; set; }
         public string IssueTitle { get; set; }
@@ -17,8 +17,8 @@ namespace Feature_Tree.Models
         public int? DependentOn { get; set; }
         public int IssueProjectId { get; set; }
 
-        public virtual Issues DependentOnNavigation { get; set; }
-        public virtual ICollection<Issues> InverseDependentOnNavigation { get; set; }
+        public virtual Issue DependentOnNavigation { get; set; }
+        public virtual ICollection<Issue> InverseDependentOnNavigation { get; set; }
         public virtual User IssueAssignedUser { get; set; }
         public virtual User IssueCreatorUser { get; set; }
         public virtual User IssueOwnerUser { get; set; }

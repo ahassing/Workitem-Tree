@@ -7,7 +7,7 @@ namespace Feature_Tree.DataRepository
 {
     public partial class BTFeatureTreeContext : DbContext
     {
-        public virtual DbSet<Issues> Issues { get; set; }
+        public virtual DbSet<Issue> Issues { get; set; }
         public virtual DbSet<Priority> Priority { get; set; }
         public virtual DbSet<Projects> Projects { get; set; }
         public virtual DbSet<Status> Status { get; set; }
@@ -22,7 +22,7 @@ namespace Feature_Tree.DataRepository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Issues>(entity =>
+            modelBuilder.Entity<Issue>(entity =>
             {
                 entity.HasKey(e => e.IssueId)
                     .HasName("PK_Issues");

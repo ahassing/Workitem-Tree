@@ -9,20 +9,20 @@ using System.Data.SqlClient;
 
 namespace Feature_Tree.DataRepository
 {
-    public class IssuesRepository : IIssuesRepository
+    public class IssueRepository : IIssueRepository
     {
         private readonly BTFeatureTreeContext _dbContext;
-        public IssuesRepository(BTFeatureTreeContext dbContext)
+        public IssueRepository(BTFeatureTreeContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Issues> ListAll()
+        public IEnumerable<Issue> ListAll()
         {
             return _dbContext.Issues.AsEnumerable();
         }
 
-        public IEnumerable<Issues> GetIssue(int id)
+        public IEnumerable<Issue> GetIssue(int id)
         {
             var issueId = new SqlParameter("@IssueId", id);
 
@@ -30,7 +30,7 @@ namespace Feature_Tree.DataRepository
                     .FromSql("upProc_Issues_Select @IssueId", issueId);
         }
 
-        public Issues CreateIssue(Issues value)
+        public Issue CreateIssue(Issue value)
         {
             //try {
                 _dbContext.Issues

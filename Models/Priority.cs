@@ -7,12 +7,12 @@ namespace Feature_Tree.Models
     {
         public Priority()
         {
-            Issues = new HashSet<Issues>();
+            Issues = new HashSet<Issue>();
         }
 
         public int PriorityId { get; set; }
         public string PriorityName { get; set; }
 
-        public virtual ICollection<Issues> Issues { get; set; }
+        public virtual ICollection<Issue> Issues { get; set; }
     }
 }

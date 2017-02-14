@@ -7,16 +7,16 @@ namespace Feature_Tree.Models
     {
         public User()
         {
-            IssuesIssueAssignedUser = new HashSet<Issues>();
-            IssuesIssueCreatorUser = new HashSet<Issues>();
-            IssuesIssueOwnerUser = new HashSet<Issues>();
+            IssuesIssueAssignedUser = new HashSet<Issue>();
+            IssuesIssueCreatorUser = new HashSet<Issue>();
+            IssuesIssueOwnerUser = new HashSet<Issue>();
         }
 
         public Guid UserId { get; set; }
         public string UserName { get; set; }
 
-        public virtual ICollection<Issues> IssuesIssueAssignedUser { get; set; }
-        public virtual ICollection<Issues> IssuesIssueCreatorUser { get; set; }
-        public virtual ICollection<Issues> IssuesIssueOwnerUser { get; set; }
+        public virtual ICollection<Issue> IssuesIssueAssignedUser { get; set; }
+        public virtual ICollection<Issue> IssuesIssueCreatorUser { get; set; }
+        public virtual ICollection<Issue> IssuesIssueOwnerUser { get; set; }
     }
 }

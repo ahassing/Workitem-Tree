@@ -7,14 +7,14 @@ namespace Feature_Tree.Models
     {
         public Status()
         {
-            Issues = new HashSet<Issues>();
+            Issues = new HashSet<Issue>();
         }
 
         public int StatusId { get; set; }
         public string StatusName { get; set; }
         public int StatusCatId { get; set; }
 
-        public virtual ICollection<Issues> Issues { get; set; }
+        public virtual ICollection<Issue> Issues { get; set; }
         public virtual StatusCategory StatusCat { get; set; }
     }
 }

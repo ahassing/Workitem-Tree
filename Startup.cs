@@ -36,7 +36,7 @@ namespace Feature_Tree
             services.AddMvc();
 
             // Register application services.
-            services.AddScoped<IIssuesRepository, IssuesRepository>();
+            services.AddScoped<IIssueRepository, IssueRepository>();
             services.AddScoped<IStatusRepository, StatusRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPriorityRepository, PriorityRepository>();

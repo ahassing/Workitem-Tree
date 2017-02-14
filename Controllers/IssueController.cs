@@ -12,17 +12,17 @@ using Feature_Tree.IDataRepository;
 namespace Feature_Tree.Controllers
 {
     [Route("api/[controller]")]
-    public class IssuesController : Controller
+    public class IssueController : Controller
     {
-        private readonly IIssuesRepository _BTfeatureTreeRepository;
+        private readonly IIssueRepository _BTfeatureTreeRepository;
 
-        public IssuesController(IIssuesRepository BTfeatureTreeRepository)
+        public IssueController(IIssueRepository BTfeatureTreeRepository)
         {
             _BTfeatureTreeRepository = BTfeatureTreeRepository;
         }
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Issues> Get()
+        public IEnumerable<Issue> Get()
         {
             var issues = _BTfeatureTreeRepository.ListAll();
 
@@ -31,14 +31,14 @@ namespace Feature_Tree.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IEnumerable<Issues> Get(int id)
+        public IEnumerable<Issue> Get(int id)
         {
             return _BTfeatureTreeRepository.GetIssue(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Issues value)
+        public void Post([FromBody]Issue value)
         {
             _BTfeatureTreeRepository.CreateIssue(value);
         }

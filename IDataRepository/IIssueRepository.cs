@@ -6,10 +6,10 @@ using Feature_Tree.Models;
 
 namespace Feature_Tree.IDataRepository
 {
-    public interface IIssuesRepository
+    public interface IIssueRepository
     {
-        IEnumerable<Issues> ListAll();
-        IEnumerable<Issues> GetIssue(int id);
-        Issues CreateIssue(Issues issues);
+        IEnumerable<Issue> ListAll();
+        IEnumerable<Issue> GetIssue(int id);
+        Issue CreateIssue(Issue issues);
     }
 }
