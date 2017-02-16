@@ -19,7 +19,8 @@ namespace Feature_Tree.DataRepository
 
         public IEnumerable<Issue> ListAll()
         {
-            return _dbContext.Issues.AsEnumerable();
+            return _dbContext.Issues
+                .FromSql("upProc_Issues_Select").ToList();
         }
 
         public IEnumerable<Issue> GetIssue(int id)

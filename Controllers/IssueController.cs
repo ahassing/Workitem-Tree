@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Feature_Tree.Models;
 using Feature_Tree.IDataRepository;
+using Microsoft.AspNetCore.Authorization;
 
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Feature_Tree.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class IssueController : Controller
     {
