@@ -13,7 +13,7 @@ BEGIN
 
 
 	SELECT * FROM Issues
-	WHERE ISNULL(@IssueId, IssueId) = IssueId
+	WHERE IssueId = ISNULL(@IssueId, IssueId)
 
 
 END
