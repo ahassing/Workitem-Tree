@@ -38,15 +38,19 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
 
 ## API Routes Currently Working
 * Issues: 
-    * GET api/issues/\{Id}
+    * GET api/issue/\{Id}
+    * GET api/issue/
 * Users:
     * GET api/user/
     * GET api/user/851B90E1-36AD-4C73-ADC7-9C4A1745DA54
 * Status:
     * GET api/status/
     * GET api/status/\{Id}
+* Priority:
+    * GET api/priority/
+    * GET api/priority/\{Id}
 
-I gave up on Entity Framework for now. It just was not working. Now that I got stored procedure wired up it will be easy to wire up and create the rest.
+
 
 # .NET Core Documentation
 
