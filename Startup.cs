@@ -42,6 +42,7 @@ namespace Feature_Tree
             services.AddScoped<IPriorityRepository, PriorityRepository>();
             services.AddScoped<ITreeRepository, TreeRepository>();
             services.AddScoped<IStatusCategoryRepository, StatusCategoryRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddDbContext<BTFeatureTreeContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Azure_DB")));
         

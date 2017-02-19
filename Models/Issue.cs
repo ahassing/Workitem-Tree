@@ -36,7 +36,7 @@ namespace Feature_Tree.Models
         public virtual User IssueCreatorUser { get; set; }
         public virtual User IssueOwnerUser { get; set; }
         public virtual Priority IssuePriority { get; set; }
-        public virtual Projects IssueProject { get; set; }
+        public virtual Project IssueProject { get; set; }
         public virtual Status IssueStatus { get; set; }
     }
 }

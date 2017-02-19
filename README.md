@@ -49,6 +49,12 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
 * Priority:
     * GET api/priority/
     * GET api/priority/\{Id}
+* StatusCategory
+    * GET api/statusCategory/
+    * GET api/statusCategor/\{Id}
+* Projects
+    * GET api/project/
+    * GET api/project/\{Id}
 
 
 

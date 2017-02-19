@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Feature_Tree.Models
 {
-    public partial class Projects
+    public partial class Project
     {
-        public Projects()
+        public Project()
         {
             Issues = new HashSet<Issue>();
         }

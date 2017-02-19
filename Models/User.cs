@@ -14,6 +14,7 @@ namespace Feature_Tree.Models
 
         public Guid UserId { get; set; }
         public string UserName { get; set; }
+        public string UserImagePath { get; set; }
 
         public virtual ICollection<Issue> IssuesIssueAssignedUser { get; set; }
         public virtual ICollection<Issue> IssuesIssueCreatorUser { get; set; }

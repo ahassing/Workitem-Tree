@@ -9,7 +9,7 @@ namespace Feature_Tree.DataRepository
     {
         public virtual DbSet<Issue> Issues { get; set; }
         public virtual DbSet<Priority> Priority { get; set; }
-        public virtual DbSet<Projects> Projects { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<StatusCategory> StatusCategory { get; set; }
         public virtual DbSet<User> Users { get; set; }
@@ -84,7 +84,7 @@ namespace Feature_Tree.DataRepository
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<Projects>(entity =>
+            modelBuilder.Entity<Project>(entity =>
             {
                 entity.HasKey(e => e.ProjectId)
                     .HasName("PK_Projects");
