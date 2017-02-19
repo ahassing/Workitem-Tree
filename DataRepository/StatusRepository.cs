@@ -18,16 +18,17 @@ namespace Feature_Tree.DataRepository
 
         public IEnumerable<Status> ListAll()
         {
-            //return _dbContext.Status.AsEnumerable();
+            return _dbContext.Status.ToList();
 
-			return _dbContext.Status
-                    .FromSql("upProc_Status_Select").ToList();
+			//return _dbContext.Status
+   //                 .FromSql("upProc_Status_Select").ToList();
         }
 
         public Status GetStatus (int statusId)
         {
-            return _dbContext.Status
-                .FromSql("upProc_Status_Select {0}", statusId).First();
+            //return _dbContext.Status
+            //    .FromSql("upProc_Status_Select {0}", statusId).First();
+            return _dbContext.Status.Where(c => c.StatusId == statusId).FirstOrDefault();
         }
 
     }

@@ -9,7 +9,7 @@ namespace Feature_Tree.IDataRepository
     public interface IIssueRepository
     {
         IEnumerable<Issue> ListAll();
-        IEnumerable<Issue> GetIssue(int id);
+        Issue GetIssue(int id);
         Issue CreateIssue(Issue issues);
     }
 }

@@ -17,14 +17,16 @@ namespace Feature_Tree.DataRepository
         }
         public IEnumerable<Priority> ListAll()
         {
-            return _dbContext.Priority
-                .FromSql("upProc_Priority_Select").ToList();
+            //return _dbContext.Priority
+            //    .FromSql("upProc_Priority_Select").ToList();
+            return _dbContext.Priority.ToList();
         }
 
         public Priority GetPriority(int priorityId)
         {
-            return _dbContext.Priority
-                .FromSql("upProc_Priority_Select {0}", priorityId).First();
+            //return _dbContext.Priority
+            //    .FromSql("upProc_Priority_Select {0}", priorityId).First();
+            return _dbContext.Priority.Where(c => c.PriorityId == priorityId).FirstOrDefault();
         }
 
     }

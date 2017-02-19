@@ -18,14 +18,16 @@ namespace Feature_Tree.DataRepository
 
         public IEnumerable<User> ListAll()
         {
-            return _dbContext.Users
-                    .FromSql("upProc_Users_Select").ToList();
+            //return _dbContext.Users
+            //        .FromSql("upProc_Users_Select").ToList();
+            return _dbContext.Users.ToList();
         }
 
         public User GetUser(Guid userId)
         {
-            return _dbContext.Users
-                    .FromSql("upProc_Users_Select {0}", userId ).First();
+            //return _dbContext.Users
+            //        .FromSql("upProc_Users_Select {0}", userId ).First();
+            return _dbContext.Users.Where(c => c.UserId == userId).FirstOrDefault();
         }
     }
 }

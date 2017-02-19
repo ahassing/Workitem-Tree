@@ -26,8 +26,10 @@
     "Microsoft.EntityFrameworkCore": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.0",
     "Microsoft.IdentityModel.Protocols": "2.1.0",
-    "FontAwesome": "4.7.0",
-    "Microsoft.EntityFrameworkCore.Design": "1.1.0"
+    "Microsoft.EntityFrameworkCore.Design": "1.1.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.Data.Common": "4.3.0",
+    "System.Data.SqlClient": "4.3.0"
   },
 
   "tools": {

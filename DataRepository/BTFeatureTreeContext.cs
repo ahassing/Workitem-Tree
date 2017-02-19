@@ -14,22 +14,20 @@ namespace Feature_Tree.DataRepository
         public virtual DbSet<StatusCategory> StatusCategory { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer(@"Server=tcp:jmknust-proj.database.windows.net,1433;Initial Catalog=Capstone_FeatureTree;Persist Security Info=False;User ID=jknust;Password=BTCapstone2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-        }
+        public BTFeatureTreeContext(DbContextOptions<BTFeatureTreeContext> options)
+    : base(options)
+{ }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Issue>(entity =>
             {
-                entity.HasKey(e => e.IssueId)
-                    .HasName("PK_Issues");
+                //entity.HasKey(e => e.IssueId)
+                //    .HasName("PK_Issues");
 
                 entity.Property(e => e.DateCreated).HasColumnType("datetime");
 
-                entity.Property(e => e.IssueDescription).IsRequired();
+                //entity.Property(e => e.IssueDescription).IsRequired();
 
                 entity.Property(e => e.IssueProjectId).HasDefaultValueSql("1");
 
@@ -37,10 +35,10 @@ namespace Feature_Tree.DataRepository
                     .IsRequired()
                     .HasMaxLength(500);
 
-                entity.HasOne(d => d.DependentOnNavigation)
-                    .WithMany(p => p.InverseDependentOnNavigation)
-                    .HasForeignKey(d => d.DependentOn)
-                    .HasConstraintName("FK_Issues_DependentIssue");
+                //entity.HasOne(d => d.DependentOnNavigation)
+                //    .WithMany(p => p.InverseDependentOnNavigation)
+                //    .HasForeignKey(d => d.DependentOn)
+                //    .HasConstraintName("FK_Issues_DependentIssue");
 
                 entity.HasOne(d => d.IssueAssignedUser)
                     .WithMany(p => p.IssuesIssueAssignedUser)

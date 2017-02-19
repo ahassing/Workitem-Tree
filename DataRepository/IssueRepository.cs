@@ -19,16 +19,22 @@ namespace Feature_Tree.DataRepository
 
         public IEnumerable<Issue> ListAll()
         {
-            return _dbContext.Issues
-                .FromSql("upProc_Issues_Select").ToList();
+            //List<Issue> issues =  _dbContext.Issues
+            //    .FromSql("upProc_Issues_Select").ToList();
+
+            //return issues;
+            return _dbContext.Issues.ToList();
+
         }
 
-        public IEnumerable<Issue> GetIssue(int id)
+        public Issue GetIssue(int id)
         {
             var issueId = new SqlParameter("@IssueId", id);
 
-            return _dbContext.Issues
-                    .FromSql("upProc_Issues_Select @IssueId", issueId);
+            //return _dbContext.Issues
+            //        .FromSql("upProc_Issues_Select @IssueId", issueId).First();
+            return _dbContext.Issues.Where(c => c.IssueId == id).FirstOrDefault();
+
         }
 
         public Issue CreateIssue(Issue value)

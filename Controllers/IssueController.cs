@@ -26,14 +26,12 @@ namespace Feature_Tree.Controllers
         [HttpGet]
         public IEnumerable<Issue> Get()
         {
-            var issues = _BTfeatureTreeRepository.ListAll();
-
-            return (issues);
+            return _BTfeatureTreeRepository.ListAll();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IEnumerable<Issue> Get(int id)
+        public Issue Get(int id)
         {
             return _BTfeatureTreeRepository.GetIssue(id);
         }
