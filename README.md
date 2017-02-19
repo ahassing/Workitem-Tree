@@ -55,6 +55,8 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
 * Projects
     * GET api/project/
     * GET api/project/\{Id}
+* Tree
+    * GET api/tree/\{ProjectId}
 
 
 
