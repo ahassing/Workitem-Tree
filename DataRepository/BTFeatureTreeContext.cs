@@ -13,6 +13,7 @@ namespace Feature_Tree.DataRepository
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<StatusCategory> StatusCategory { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<IssueType> IssueTypes { get; set; }
 
         public BTFeatureTreeContext(DbContextOptions<BTFeatureTreeContext> options)
     : base(options)
@@ -75,6 +76,7 @@ namespace Feature_Tree.DataRepository
                     .HasForeignKey(d => d.IssueStatusId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_Issues_StatusId");
+
             });
 
             modelBuilder.Entity<Priority>(entity =>
@@ -125,6 +127,16 @@ namespace Feature_Tree.DataRepository
                 entity.Property(e => e.UserId).ValueGeneratedNever();
 
                 entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<IssueType>(entity =>
+            {
+                entity.HasKey(e => e.TypeId)
+                    .HasName("PK_IssueTypes");
+
+                entity.Property(e => e.TypeName)
                     .IsRequired()
                     .HasMaxLength(50);
             });

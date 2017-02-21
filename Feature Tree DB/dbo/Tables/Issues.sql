@@ -10,6 +10,7 @@
     [DateCreated]         DATETIME         NOT NULL,
     [DependentOn]         INT              NULL,
     [IssueProjectId]      INT              DEFAULT ((1)) NOT NULL,
+    [IssueType]           INT              NOT NULL,
     CONSTRAINT [PK_Issues] PRIMARY KEY CLUSTERED ([IssueId] ASC),
     CONSTRAINT [FK_Issues_AssignedId] FOREIGN KEY ([IssueAssignedUserId]) REFERENCES [dbo].[Users] ([UserId]),
     CONSTRAINT [FK_Issues_CreatedId] FOREIGN KEY ([IssueCreatorUserId]) REFERENCES [dbo].[Users] ([UserId]),
@@ -17,8 +18,11 @@
     CONSTRAINT [FK_Issues_OwnerId] FOREIGN KEY ([IssueOwnerUserId]) REFERENCES [dbo].[Users] ([UserId]),
     CONSTRAINT [FK_Issues_Priority] FOREIGN KEY ([IssuePriorityId]) REFERENCES [dbo].[Priority] ([PriorityId]),
     CONSTRAINT [FK_Issues_ProjectId] FOREIGN KEY ([IssueProjectId]) REFERENCES [dbo].[Projects] ([ProjectId]),
-    CONSTRAINT [FK_Issues_StatusId] FOREIGN KEY ([IssueStatusId]) REFERENCES [dbo].[Status] ([StatusId])
+    CONSTRAINT [FK_Issues_StatusId] FOREIGN KEY ([IssueStatusId]) REFERENCES [dbo].[Status] ([StatusId]),
+    CONSTRAINT [FK_Issues_TypeId] FOREIGN KEY ([IssueType]) REFERENCES [dbo].[IssueTypes] ([TypeId])
 );
+
+
 
 
 

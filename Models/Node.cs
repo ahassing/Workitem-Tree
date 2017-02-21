@@ -20,6 +20,7 @@ namespace Feature_Tree.Models
         public String StatusName { get; set; }
         public String StatusCatName { get; set; }
         public String StatusCatColor { get; set; }
+        public String TypeName { get; set; }
         public String UserAvatarPath { get; set; }
         public int? DependentOn { get; set; }
         public  List<Node> Children { get; set; }

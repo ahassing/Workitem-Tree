@@ -30,6 +30,7 @@ namespace Feature_Tree.DataRepository
                       join user in _dbContext.Users on issue.IssueAssignedUserId equals user.UserId
                       join project in _dbContext.Projects on issue.IssueProjectId equals project.ProjectId
                       join statusCat in _dbContext.StatusCategory on status.StatusCatId equals statusCat.StatusCatId
+                      join issueType in _dbContext.IssueTypes on issue.IssueType equals issueType.TypeId
                       where issue.IssueProjectId == projectId 
                       select new
                       {
@@ -40,6 +41,7 @@ namespace Feature_Tree.DataRepository
                           IssueDescription = issue.IssueDescription,
                           StatusCatColor = statusCat.StatusCatColor,
                           StatusCatName = statusCat.StatusCatName,
+                          TypeName = issueType.TypeName,
                           UserName = user.UserName,
                           UserAvatarPath = user.UserImagePath,
                           StatusName = status.StatusName,

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace Feature_Tree.Models
@@ -9,13 +10,15 @@ namespace Feature_Tree.Models
     {
         [Key]
         public int IssueId { get; set; }
-          public string IssueTitle { get; set; }
+        public string IssueTitle { get; set; }
         [Required]
         public string IssueDescription { get; set; }
   
         public int IssueStatusId { get; set; }
   
         public int IssuePriorityId { get; set; }
+        [ForeignKey("FK_Issues_TypeId")]
+        public int IssueType { get; set; }
   
         public Guid IssueCreatorUserId { get; set; }
   
