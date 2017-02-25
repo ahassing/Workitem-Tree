@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { UniversalModule } from 'angular2-universal';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
+import { ChartComponent } from './components/chart/chart.component'
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalTestComponent } from './components/Modal/modal.component';
-import { FormsModule } from '@angular/forms';
-
 
 
 @NgModule({
     bootstrap: [ AppComponent ],
     declarations: [
         AppComponent,
+        ChartComponent,
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
