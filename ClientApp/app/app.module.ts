@@ -12,7 +12,7 @@ import { ChartComponent } from './components/chart/chart.component'
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ModalTestComponent } from './components/Modal/modal.component';
-
+import 'rxjs/add/operator/toPromise';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -30,6 +30,7 @@ import { ModalTestComponent } from './components/Modal/modal.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'project/:id', component: ChartComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'testing', component: ModalTestComponent },

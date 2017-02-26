@@ -24,7 +24,7 @@ export class ChartComponent implements OnInit {
     // Get the data for the tree
     getTreeData(): void {
         let insertData = {};
-        this.treeNodeService.getTreeNodes().then(data => {
+        this.treeNodeService.getTreeNodes().subscribe(data => {
             insertData = data;
             this.initTree({ id: "#canvas", data: insertData, modus: "line" });
         });        
