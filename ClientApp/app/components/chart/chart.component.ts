@@ -1,6 +1,8 @@
 ﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as $ from 'jquery';
 import * as d3 from 'd3';
+import { ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
@@ -16,15 +18,26 @@ export type DataType = { x: any, y: any }
 })
 
 export class ChartComponent implements OnInit {
+    id: number;
+    private sub: any;
+
     // Initialize the component
     ngOnInit(): void {
+        //this.route.params
+        //    .switchMap((params: Params) => this.treeNodeService.getTreeNodes(+params['id']))
+        //    .subscribe(hero => this. = hero);
+
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id'];
         this.getTreeData();
+     
+        }); // (+) converts string 'id' to a number
     }
 
     // Get the data for the tree
     getTreeData(): void {
         let insertData = {};
-        this.treeNodeService.getTreeNodes().then(data => {
+        this.treeNodeService.getTreeNodes(this.id).subscribe(data => {
             insertData = data;
             this.initTree({ id: "#canvas", data: insertData, modus: "line" });
         });        
@@ -58,7 +71,7 @@ export class ChartComponent implements OnInit {
     private _callerNode = null;
     private _callerMode = 0;
 
-    constructor(private treeNodeService: TreeNodeService) { }
+    constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute) { }
 
     // This function collapses the nodes in the tree
     collapse(d: TreeNode): void {

@@ -1,11 +1,24 @@
 ﻿import { Injectable } from "@angular/core";
-import { TREEDATA } from "./mock-tree-nodes";
+
 import { TreeNode } from "./tree-node";
-import Promise from "ts-promise";
+
+import { Headers, Http, Response} from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TreeNodeService {
-    getTreeNodes(): Promise<TreeNode> {
-        return Promise.resolve(TREEDATA);
+
+    constructor(private http: Http) { }
+
+    getTreeNodes(id: number): Observable<TreeNode> {
+        return this.http.get('api/tree/' + id)
+            .map((response: Response) => <TreeNode> response.json());
+
     }
+
+    //private handleError(error: any): Observable<any> {
+    //    console.error('An error occurred', error); // for demo purposes only
+    //    return Observable.reject(error.message || error);
+    //}
 }

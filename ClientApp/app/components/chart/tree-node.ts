@@ -6,6 +6,7 @@
     issueDescription: string;
     priorityName: string;
     statusName: string;
+    typeName: string;
     statusCatName: string;
     statusCatColor: string;
     userAvatarPath: string;
