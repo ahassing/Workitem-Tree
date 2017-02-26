@@ -8,11 +8,13 @@ import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { ChartComponent } from './components/chart/chart.component'
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
+import { ChartComponent } from './components/chart/chart.component';
 import { ModalTestComponent } from './components/Modal/modal.component';
-import 'rxjs/add/operator/toPromise';
+import { ProjectListComponent } from './components/projectlist/projectlist.component';
+import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
+
+import { ProjectListService } from './components/projectlist/projectlist-service';
+
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -20,20 +22,17 @@ import 'rxjs/add/operator/toPromise';
         AppComponent,
         ChartComponent,
         NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
         HomeComponent,
+        ProjectListComponent,
+        ProjectThumbnailComponent,
         ModalTestComponent
     ],
+    providers: [ProjectListService],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'project/:id', component: ChartComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: 'testing', component: ModalTestComponent },
             { path: '**', redirectTo: 'home' }
         ]),
         Ng2Bs3ModalModule,
