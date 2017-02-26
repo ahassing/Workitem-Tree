@@ -1,26 +1,27 @@
-﻿import { Component, OnInit } from '@angular/core'
-import { ProjectListService } from './projectlist-service'
+﻿import { Component, OnInit } from '@angular/core';
+import { ProjectListService } from './projectlist-service';
+import { Project } from './project';
 
 @Component({
     selector: 'projectlist',
     template: `
         <div class="row">
             <div *ngFor="let project of projects" class="col-md-4">
-                    <project-thumbnail routerLink="/chart" [project]="project"></project-thumbnail>
+                    <project-thumbnail routerLink="/project/{{project.projectId}}" [project]="project"></project-thumbnail>
             </div>
         </div>
     `
 })
 export class ProjectListComponent implements OnInit{
 
-    projects: any[]
+    projects: Project[]
 
-    constructor(private projectListService: ProjectListService) {
-
-    }
+    constructor(private projectListService: ProjectListService) {}
 
     ngOnInit() {
-        this.projects = this.projectListService.getProjects();
+        this.projectListService.getProjects().subscribe( data => {
+            this.projects = data;
+        });
     }
 
     handleProjectClick(projectName) {

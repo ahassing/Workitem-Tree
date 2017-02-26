@@ -1,4 +1,5 @@
-﻿import { Component, Input } from '@angular/core'
+﻿import { Component, Input } from '@angular/core';
+import { Project } from './project';
 
 @Component({
     selector: 'project-thumbnail',
@@ -11,5 +12,5 @@
 })
 export class ProjectThumbnailComponent {
 
-    @Input() project:any
+    @Input() project: Project
 }

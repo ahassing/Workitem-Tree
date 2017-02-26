@@ -1,10 +1,19 @@
 ﻿import { Injectable } from "@angular/core";
+import { Project } from "./project";
+import { Headers, Http, Response} from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ProjectListService {
 
-    getProjects() {
-        return PROJECTS;
+    constructor(private http: Http) { }
+
+    getProjects(): Observable<Project[]> {
+
+        return this.http.get('api/project/')
+            .map((response: Response) => <Project[]> response.json());
+        //return PROJECTS;
     }
 }
 
