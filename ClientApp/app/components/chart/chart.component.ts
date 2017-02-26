@@ -327,8 +327,8 @@ export class ChartComponent implements OnInit {
         this._root = u_opts.data;
         
         $(id).html("");   // Reset
-        let width = $(id).innerWidth() - this._margin.left - this._margin.right;
-        let height = $(id).innerHeight() - this._margin.top - this._margin.bottom;
+        let width = $(id).innerWidth();
+        let height = $(id).innerHeight();
         
         // Set node dimensions for tree
         this._tree = d3.layout.tree().nodeSize([this._rectW + this._rectSpacing, this._rectH + this._rectSpacing]);
