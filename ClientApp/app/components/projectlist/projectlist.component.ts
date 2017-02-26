@@ -5,8 +5,8 @@ import { ProjectListService } from './projectlist-service'
     selector: 'projectlist',
     template: `
         <div class="row">
-            <div *ngFor="let project of projects" class="col-md-5">
-                    <project-thumbnail (click)="handleProjectClick(project.name)" [project]="project"></project-thumbnail>
+            <div *ngFor="let project of projects" class="col-md-4">
+                    <project-thumbnail routerLink="/chart" [project]="project"></project-thumbnail>
             </div>
         </div>
     `

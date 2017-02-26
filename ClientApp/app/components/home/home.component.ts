@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
     selector: 'home',
     template: require('./home.component.html'),
     styles: [`
-        #main { padding-left: 50px; 
-                padding-right: 50px;
+        #main { padding-left: 30px; 
+                padding-right: 30px;
                 }
     `] 
 })
