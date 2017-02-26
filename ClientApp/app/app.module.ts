@@ -34,7 +34,6 @@ import { ProjectListService } from './components/projectlist/projectlist-service
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'project/:id', component: ChartComponent },
-            { path: 'chart', component: ChartComponent },
             { path: '**', redirectTo: 'home' }
         ]),
         Ng2Bs3ModalModule,

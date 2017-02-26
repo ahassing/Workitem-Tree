@@ -6,7 +6,7 @@ import { ProjectListService } from './projectlist-service'
     template: `
         <div class="row">
             <div *ngFor="let project of projects" class="col-md-4">
-                    <project-thumbnail routerLink="/chart" [project]="project"></project-thumbnail>
+                    <project-thumbnail [project]="project"></project-thumbnail>
             </div>
         </div>
     `
