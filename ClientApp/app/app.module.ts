@@ -33,6 +33,7 @@ import { ProjectListService } from './components/projectlist/projectlist-service
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'project/:id', component: ChartComponent },
             { path: 'chart', component: ChartComponent },
             { path: '**', redirectTo: 'home' }
         ]),
