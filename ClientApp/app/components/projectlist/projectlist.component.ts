@@ -6,7 +6,7 @@ import { ProjectListService } from './projectlist-service'
     template: `
         <div class="row">
             <div *ngFor="let project of projects" class="col-md-5">
-                    <project-thumbnail [project]="project"></project-thumbnail>
+                    <project-thumbnail (click)="handleProjectClick(project.name)" [project]="project"></project-thumbnail>
             </div>
         </div>
     `
@@ -21,6 +21,10 @@ export class ProjectListComponent implements OnInit{
 
     ngOnInit() {
         this.projects = this.projectListService.getProjects();
+    }
+
+    handleProjectClick(projectName) {
+
     }
 
 }
