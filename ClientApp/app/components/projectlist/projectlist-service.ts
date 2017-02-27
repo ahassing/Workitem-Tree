@@ -12,7 +12,7 @@ export class ProjectListService {
     getProjects(): Observable<Project[]> {
 
         return this.http.get('api/project/')
-            .map((response: Response) => <Project[]>response.json().catch(this.handleError))
+            .map((response: Response) => <Project[]>response.json());
     }
 
     private handleError(error: Response) {

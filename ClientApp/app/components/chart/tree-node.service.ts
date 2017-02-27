@@ -11,7 +11,7 @@ export class TreeNodeService {
 
     getTreeNodes(id: number): Observable<TreeNode> {
         return this.http.get('api/tree/' + id)
-            .map((response: Response) => <TreeNode>response.json().catch(this.handleError))
+            .map((response: Response) => <TreeNode>response.json());
 
     }
 
