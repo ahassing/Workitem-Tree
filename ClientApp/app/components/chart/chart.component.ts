@@ -23,14 +23,9 @@ export class ChartComponent implements OnInit, OnDestroy {
 
     // Initialize the component
     ngOnInit(): void {
-        //this.route.params
-        //    .switchMap((params: Params) => this.treeNodeService.getTreeNodes(+params['id']))
-        //    .subscribe(hero => this. = hero);
-
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
         this.getTreeData();
-     
         }); // (+) converts string 'id' to a number
     }
 

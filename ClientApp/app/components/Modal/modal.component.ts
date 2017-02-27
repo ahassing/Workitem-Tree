@@ -1,10 +1,7 @@
-﻿import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+﻿import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-
-
-
-
+import { ModalService, Status, Priority, User } from './modal.service';
 
 @Component({
 
@@ -21,9 +18,14 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
             color: #d9534f !important; /* red */
         }`
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [ModalService]
 })
-export class ModalTestComponent {
+export class ModalTestComponent implements OnInit {
+
+    statuses: Status[];
+    priorities: Priority[];
+    users: User[];
 
     @ViewChild('modal')
     modal: ModalComponent;
@@ -41,7 +43,20 @@ export class ModalTestComponent {
     backdrop: string | boolean = true;
     css: boolean = false;
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private modalService: ModalService) { }
+
+    ngOnInit() :void {
+        this.modalService.getStatusSL().subscribe(data => {
+            this.statuses = data;
+        });
+        this.modalService.getPrioritySL().subscribe(data => {
+            this.priorities = data;
+        });
+        this.modalService.getUserSL().subscribe(data => {
+            this.users = data;
+        });
+    }
+
 
     closed() {
         this.output = '(closed) ' + this.selected;
@@ -61,18 +76,19 @@ export class ModalTestComponent {
 
     open() {
         this.modal.open();
+       
     }
 }
 
 export class Issue {
-    IssueTitle: string;
-    IssueDescription: string;
-    IssueStatusId: number;
-    IssuePriorityId: number;
-    IssueCreatorUserId: string;
-    IssueAssignedUserId: string;
-    IssueOwnerUserId: string;
-    DateCreated: Date;
-    DependentOn: number;
-    IssueProjectId: number;
+    issueTitle: string;
+    issueDescription: string;
+    issueStatusId: number;
+    issuePriorityId: number;
+    issueCreatorUserId: string;
+    issueAssignedUserId: string;
+    issueOwnerUserId: string;
+    dateCreated: Date;
+    dependentOn: number;
+    issueProjectId: number;
 }

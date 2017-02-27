@@ -1,5 +1,5 @@
 ﻿<script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>
-<!--<script src="node_modules/jquery/dist/jquery.js"></script>-->
+
 
 <button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>
 
@@ -10,44 +10,35 @@
         </modal-header>
         <modal-body>
             <div class="form-group">
-                <label for="IssueTitle">Title:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueTitle" name="IssueTitle" id="IssueTitle">
+                <label for="issueTitle">Title:</label>
+                <input type="text" class="form-control" required [(ngModel)]="issueTitle" name="IssueTitle" id="IssueTitle">
             </div>
             <div class="form-group">
-                <label for="IssueDescription">Description:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueDescription" name="IssueDescription" id="IssueDescription">
+                <label for="issueDescription">Description:</label>
+                <input type="text" class="form-control" [(ngModel)]="issueDescription" name="IssueDescription" id="IssueDescription">
             </div>
             <div class="form-group">
-                <label for="IssueStatusId">StatusId:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueStatusId" name="IssueStatusId" id="IssueStatusId">
+                <label for="issueStatusId">Status:</label>
+                <select type="string" [(ngModel)]="issueStatusId" name="status" class="form-control">
+                    <option *ngFor="let status of statuses" value="{{status.statusId}}">{{status.statusName}}</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="IssuePriorityId">PriorityId:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssuePriorityId" name="IssuePriorityId" id="IssuePriorityId">
+                <label for="IssuePriorityId">Priority:</label>
+                <select type="string" [(ngModel)]="issuePriorityId" name="priority" class="form-control">
+                    <option *ngFor="let priority of priorities" value="{{priority.priorityId}}">{{priority.priorityName}}</option>
+                </select>
             </div>
+            <!-- Plan on implementing these as ng-autocompletes instead of dropdowns.-->
             <div class="form-group">
-                <label for="IssueCreatorUserId">CreatorId:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueCreatorUserId" name="IssueCreatorUserId" id="IssueCreatorUserId">
-            </div>
-            <div class="form-group">
-                <label for="IssueAssignedUserId">AssignedUser:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueAssignedUserId" name="IssueAssignedUserId" id="IssueAssignedUserId">
-            </div>
-            <div class="form-group">
-                <label for="IssueOwnerUserId">OwnerId:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueOwnerUserId" name="IssueOwnerUserId" id="IssueOwnerUserId">
-            </div>
-            <div class="form-group">
-                <label for="DateCreated">DateCreated:</label>
-                <input type="text" class="form-control" [(ngModel)]="DateCreated" name="DateCreated" id="DateCreated">
+                <label for="IssueAssignedUserId">Assigned To:</label>
+                <select type="string" [(ngModel)]="issueAssignedUserId" name="assignedTo" class="form-control">
+                    <option *ngFor="let user of users" value="{{user.userId}}">{{user.userName}}</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="DependentOn">DependentOn:</label>
-                <input type="text" class="form-control" required [(ngModel)]="DependentOn" name="DependentOn" id="DependentOn">
-            </div>
-            <div class="form-group">
-                <label for="IssueProjectId">IssueProjectId:</label>
-                <input type="text" class="form-control" required [(ngModel)]="IssueProjectId" name="IssueProjectId" id="IssueProjectId">
+                <input type="text" class="form-control" required [(ngModel)]="dependentOn" name="DependentOn" id="DependentOn">
             </div>
         </modal-body>
         <modal-footer>

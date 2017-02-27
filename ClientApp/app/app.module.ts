@@ -11,6 +11,7 @@ import { ModalTestComponent } from './components/Modal/modal.component';
 import { ProjectListComponent } from './components/projectlist/projectlist.component';
 import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
 import { ProjectListService } from './components/projectlist/projectlist-service';
+import { ModalService } from './components/modal/modal.service';
 
 
 @NgModule({
