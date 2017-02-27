@@ -11,12 +11,12 @@ export class TreeNodeService {
 
     getTreeNodes(id: number): Observable<TreeNode> {
         return this.http.get('api/tree/' + id)
-            .map((response: Response) => <TreeNode> response.json());
+            .map((response: Response) => <TreeNode>response.json())
+            .catch(this.handleError);
 
     }
 
-    //private handleError(error: any): Observable<any> {
-    //    console.error('An error occurred', error); // for demo purposes only
-    //    return Observable.reject(error.message || error);
-    //}
+    private handleError(error: Response) {
+        return Observable.throw(error.statusText);
+    }
 }

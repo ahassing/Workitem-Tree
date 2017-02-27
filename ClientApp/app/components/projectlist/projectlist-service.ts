@@ -12,9 +12,14 @@ export class ProjectListService {
     getProjects(): Observable<Project[]> {
 
         return this.http.get('api/project/')
-            .map((response: Response) => <Project[]> response.json());
-        //return PROJECTS;
+            .map((response: Response) => <Project[]>response.json())
+            .catch(this.handleError);
     }
+
+    private handleError(error: Response) {
+        return Observable.throw(error.statusText);
+    }
+
 }
 
 const PROJECTS = [

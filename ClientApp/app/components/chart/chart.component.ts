@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import * as $ from 'jquery';
 import * as d3 from 'd3';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -17,7 +17,7 @@ export type DataType = { x: any, y: any }
     providers: [TreeNodeService]
 })
 
-export class ChartComponent implements OnInit {
+export class ChartComponent implements OnInit, OnDestroy {
     id: number;
     private sub: any;
 
@@ -32,6 +32,10 @@ export class ChartComponent implements OnInit {
         this.getTreeData();
      
         }); // (+) converts string 'id' to a number
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     // Get the data for the tree
