@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import * as d3 from 'd3';
 import { ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import 'bootstrap';
 
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
@@ -185,7 +186,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("y", this._rectH * 2 / 5)
             .style("text-anchor", "start")
             .text(function (d) {
-                return d.statusCatName;
+                return d.statusName;
             });
 
         // adds node id label to the node
@@ -223,6 +224,27 @@ export class ChartComponent implements OnInit, OnDestroy {
             .text(function (d) {
                 return d.dependentOn;
             });
+
+        //nodeEnter.append("svg:foreignObject")
+        //    .attr("width", 20)
+        //    .attr("height", 20)
+        //    .attr("y", this._rectH - 145)
+        //    .attr("x", this._rectW - 20)
+        //    .append("xhtml:span")
+        //    .attr("class", 'control glyphicon glyphicon-edit');
+
+        nodeEnter.append("svg:foreignObject")
+            .attr("width", 50)
+            .attr("height", 20)
+            .attr("y", this._rectH  - 145)
+            .attr("x", this._rectW - 53)
+            .append("xhtml:button")
+            .attr("class", "btn btn-secondary btn-xs")
+            .attr("type", "button")
+            .text("Edit ")
+            .append("xhtml:span")
+            .attr("class", 'control glyphicon glyphicon-edit');
+
 
         // Transition nodes to their new position.
         let nodeUpdate = node.transition()

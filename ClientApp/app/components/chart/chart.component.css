@@ -2,13 +2,19 @@
    cursor:default;
 }
 .node text {
-    font: 12px sans-serif;
+    font: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     fill: black;
     font-weight: bold;
 }
 .node rect {
   stroke: black;
   stroke-width: 1px;
+}
+.control.glyphicon {
+    position: static;
+    color: black;
+
 }
 .link {
   fill: none;
@@ -19,8 +25,8 @@
   cursor: move;
   height: 700px;
   width: 100%;
-  background-color: #fff;
-  border: 1px solid black;
+  background-color: #f5f5f5;
+  border: 1px solid #e7e7e7;
   margin: 0px 0px 10px 0px;
 }
 div.tooltip {
@@ -32,6 +38,6 @@ div.tooltip {
   font: 12px sans-serif;
   background: lightsteelblue;
   border: 0px;
-  border-radius: 8px;
+  border-radius: 4px;
   pointer-events: none;
 }
