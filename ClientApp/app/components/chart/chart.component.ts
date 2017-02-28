@@ -1,9 +1,10 @@
-﻿import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, ViewEncapsulation, OnDestroy, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
 import * as d3 from 'd3';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'bootstrap';
+import { ModalTestComponent } from '../Modal/modal.component';
 
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
@@ -21,6 +22,7 @@ export type DataType = { x: any, y: any }
 export class ChartComponent implements OnInit, OnDestroy {
     id: number;
     private sub: any;
+    @ViewChild(ModalTestComponent) myChild: ModalTestComponent;
 
     // Initialize the component
     ngOnInit(): void {
@@ -71,7 +73,8 @@ export class ChartComponent implements OnInit, OnDestroy {
     private _callerNode = null;
     private _callerMode = 0;
 
-    constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute) { }
+    constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute, private router: Router) { }
+
 
     // This function collapses the nodes in the tree
     collapse(d: TreeNode): void {
@@ -106,7 +109,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("transform", function (d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-            .on("click", this.nodeClick());
+           // .on("click", this.nodeClick());
 
         // Color the nodes based on the node color property
         nodeEnter.append("rect")
@@ -233,17 +236,33 @@ export class ChartComponent implements OnInit, OnDestroy {
         //    .append("xhtml:span")
         //    .attr("class", 'control glyphicon glyphicon-edit');
 
+        // adds edit button to the node
         nodeEnter.append("svg:foreignObject")
             .attr("width", 50)
             .attr("height", 20)
-            .attr("y", this._rectH  - 145)
+            .attr("y", this._rectH - 145)
             .attr("x", this._rectW - 53)
             .append("xhtml:button")
             .attr("class", "btn btn-secondary btn-xs")
             .attr("type", "button")
             .text("Edit ")
+            .on('click', data => {     
+                this.myChild.open();
+                //you should had imported 'Router' from '@angular/router'
+                //this.router.navigate(['modalTest']);
+            })
             .append("xhtml:span")
             .attr("class", 'control glyphicon glyphicon-edit');
+
+        nodeEnter.append("svg:foreignObject")
+            .attr("width", 50)
+            .attr("height", 20)
+            .attr("y", this._rectH - 20)
+            .attr("x", this._rectW /2 - 7)
+            .append("xhtml:span")
+            .attr("class", "control glyphicon glyphicon-menu-down")
+            .on("click", this.nodeClick());
+            
 
 
         // Transition nodes to their new position.

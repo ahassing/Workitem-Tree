@@ -31,6 +31,7 @@ import { ModalService } from './components/modal/modal.service';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'modalTest', component: ModalTestComponent },
+            { path: 'edit', component: ModalTestComponent },
             { path: 'home', component: HomeComponent },
             { path: 'project/:id', component: ChartComponent },
             { path: '**', redirectTo: 'home' }

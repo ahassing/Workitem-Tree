@@ -1,12 +1,11 @@
 ﻿<script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>
 
+<!--<button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>-->
 
-<button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>
-
-<modal #validationModal>
+<modal #modal>
     <form #modalForm="ngForm">
         <modal-header [show-close]="true">
-            <h4 class="modal-title">Create a Node</h4>
+            <h4 class="modal-title">Edit a Node</h4>
         </modal-header>
         <modal-body>
             <div class="form-group">

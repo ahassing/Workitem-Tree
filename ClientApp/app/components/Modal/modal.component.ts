@@ -1,11 +1,11 @@
-﻿import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
+﻿import {Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalService, Status, Priority, User } from './modal.service';
 
 @Component({
 
-    selector: 'modal-demo-component',
+    selector: 'modal-component',
     template: require('./modal.component.html'),
     styles: [
         `.ng-valid[required] {
@@ -21,7 +21,7 @@ import { ModalService, Status, Priority, User } from './modal.service';
     encapsulation: ViewEncapsulation.None,
     providers: [ModalService]
 })
-export class ModalTestComponent implements OnInit {
+export class ModalTestComponent   {
 
     statuses: Status[];
     priorities: Priority[];
@@ -45,7 +45,49 @@ export class ModalTestComponent implements OnInit {
 
     constructor(private router: Router, private modalService: ModalService) { }
 
-    ngOnInit() :void {
+    //ngOnInit() :void {
+    //    this.modalService.getStatusSL().subscribe(data => {
+    //        this.statuses = data;
+    //    });
+    //    this.modalService.getPrioritySL().subscribe(data => {
+    //        this.priorities = data;
+    //    });
+    //    this.modalService.getUserSL().subscribe(data => {
+    //        this.users = data;
+    //    });
+    //}
+
+    ngAfterViewInit() {
+        this.modalService.getStatusSL().subscribe(data => {
+            this.statuses = data;
+        });
+        this.modalService.getPrioritySL().subscribe(data => {
+            this.priorities = data;
+        });
+        this.modalService.getUserSL().subscribe(data => {
+            this.users = data;
+  
+        });
+      
+    }
+
+    //closed() {
+    //    this.output = '(closed) ' + this.selected;
+    //}
+
+    //dismissed() {
+    //    this.output = '(dismissed)';
+    //}
+
+    //opened() {
+    //    this.output = '(opened)';
+    //}
+
+    //navigate() {
+    //    this.router.navigateByUrl('/hello');
+    //}
+
+    open() {
         this.modalService.getStatusSL().subscribe(data => {
             this.statuses = data;
         });
@@ -55,26 +97,6 @@ export class ModalTestComponent implements OnInit {
         this.modalService.getUserSL().subscribe(data => {
             this.users = data;
         });
-    }
-
-
-    closed() {
-        this.output = '(closed) ' + this.selected;
-    }
-
-    dismissed() {
-        this.output = '(dismissed)';
-    }
-
-    opened() {
-        this.output = '(opened)';
-    }
-
-    navigate() {
-        this.router.navigateByUrl('/hello');
-    }
-
-    open() {
         this.modal.open();
        
     }
