@@ -22,7 +22,8 @@ export type DataType = { x: any, y: any }
 export class ChartComponent implements OnInit, OnDestroy {
     id: number;
     private sub: any;
-    @ViewChild(ModalTestComponent) myChild: ModalTestComponent;
+    //Add Child Component
+    @ViewChild(ModalComponent) myChild: ModalComponent;
 
     // Initialize the component
     ngOnInit(): void {

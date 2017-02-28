@@ -7,7 +7,7 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { ModalTestComponent } from './components/Modal/modal.component';
+import { ModalComponent } from './components/Modal/modal.component';
 import { ProjectListComponent } from './components/projectlist/projectlist.component';
 import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
 import { ProjectListService } from './components/projectlist/projectlist-service';
@@ -23,7 +23,7 @@ import { ModalService } from './components/modal/modal.service';
         HomeComponent,
         ProjectListComponent,
         ProjectThumbnailComponent,
-        ModalTestComponent
+        ModalComponent
     ],
     providers: [ProjectListService],
     imports: [
