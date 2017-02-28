@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'bootstrap';
-import { ModalTestComponent } from '../Modal/modal.component';
+import { EditModalComponent } from '../Modal/modal.component';
 
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
@@ -23,7 +23,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     id: number;
     private sub: any;
     //Add Child Component
-    @ViewChild(ModalComponent) myChild: ModalComponent;
+    @ViewChild(EditModalComponent) myChild: EditModalComponent;
 
     // Initialize the component
     ngOnInit(): void {

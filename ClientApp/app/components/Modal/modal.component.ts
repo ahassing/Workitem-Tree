@@ -21,7 +21,7 @@ import { ModalService, Status, Priority, User } from './modal.service';
     encapsulation: ViewEncapsulation.None,
     providers: [ModalService]
 })
-export class ModalComponent   {
+export class EditModalComponent   {
 
     statuses: Status[];
     priorities: Priority[];
