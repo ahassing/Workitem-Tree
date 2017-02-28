@@ -30,8 +30,7 @@ import { ModalService } from './components/modal/modal.service';
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'modalTest', component: ModalTestComponent },
-            { path: 'edit', component: ModalTestComponent },
+            { path: 'modalTest', component: EditModalComponent },
             { path: 'home', component: HomeComponent },
             { path: 'project/:id', component: ChartComponent },
             { path: '**', redirectTo: 'home' }
