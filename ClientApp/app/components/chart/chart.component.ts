@@ -5,7 +5,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'bootstrap';
 import { EditModalComponent } from '../Modal/modal.component';
-
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
 
@@ -248,7 +247,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("type", "button")
             .text("Edit ")
             .on('click', data => {     
-                this.myChild.open();
+                this.myChild.edit(data.issueId);
                 //you should had imported 'Router' from '@angular/router'
                 //this.router.navigate(['modalTest']);
             })

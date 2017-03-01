@@ -22,14 +22,14 @@ namespace Feature_Tree.Controllers
         {
             _BTfeatureTreeRepository = BTfeatureTreeRepository;
         }
-        // GET: api/values
+        // GET: api/issue
         [HttpGet]
         public IEnumerable<Issue> Get()
         {
             return _BTfeatureTreeRepository.ListAll();
         }
 
-        // GET api/values/5
+        // GET api/issue/5
         [HttpGet("{id}")]
         public Issue Get(int id)
         {

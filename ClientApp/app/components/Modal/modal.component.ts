@@ -1,4 +1,4 @@
-﻿import {Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit} from '@angular/core';
+﻿import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalService, Status, Priority, User } from './modal.service';
@@ -26,6 +26,7 @@ export class EditModalComponent   {
     statuses: Status[];
     priorities: Priority[];
     users: User[];
+    editIssue: Issue = new Issue();
 
     @ViewChild('modal')
     modal: ModalComponent;
@@ -57,27 +58,29 @@ export class EditModalComponent   {
     //    });
     //}
 
-    ngAfterViewInit() {
-        this.modalService.getStatusSL().subscribe(data => {
-            this.statuses = data;
-        });
-        this.modalService.getPrioritySL().subscribe(data => {
-            this.priorities = data;
-        });
-        this.modalService.getUserSL().subscribe(data => {
-            this.users = data;
+    //ngAfterViewInit() {
+    //    this.modalService.getStatusSL().subscribe(data => {
+    //        this.statuses = data;
+    //    });
+    //    this.modalService.getPrioritySL().subscribe(data => {
+    //        this.priorities = data;
+    //    });
+    //    this.modalService.getUserSL().subscribe(data => {
+    //        this.users = data;
   
-        });
+    //    });
       
+    //}
+
+    closed() {
+        this.output = '(closed) ' + this.selected;
+        console.log('got to closed');
     }
 
-    //closed() {
-    //    this.output = '(closed) ' + this.selected;
-    //}
-
-    //dismissed() {
-    //    this.output = '(dismissed)';
-    //}
+    dismissed() {
+        this.output = '(dismissed)';
+        this.editIssue = null;
+    }
 
     //opened() {
     //    this.output = '(opened)';
@@ -86,6 +89,12 @@ export class EditModalComponent   {
     //navigate() {
     //    this.router.navigateByUrl('/hello');
     //}
+    edit(id: number) {
+        this.modalService.getIssue(id).subscribe(data => {
+            this.editIssue = data;
+        });
+        this.open();
+    }
 
     open() {
         this.modalService.getStatusSL().subscribe(data => {
@@ -98,7 +107,6 @@ export class EditModalComponent   {
             this.users = data;
         });
         this.modal.open();
-       
     }
 }
 
