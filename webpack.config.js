@@ -17,7 +17,13 @@ var sharedConfig = {
             { test: /\.ts$/, include: /ClientApp/, loader: 'ts', query: { silent: true } },
             { test: /\.html$/, loader: 'raw' },
             { test: /\.css$/, loader: 'to-string!css' },
-            { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'url', query: { limit: 25000 } }
+            //{ test: /\.(png|jpg|jpeg|gif|svg)$/, loader: 'url', query: { limit: 25000 } },
+            //{ test: /\.(png|jpe?g|gif|ico)$/, loader: 'file-loader?name=assets/[name].[hash].[ext]'},
+            //{ test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+            //{ test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+            //{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
+            //{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
+            //{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml'}  
         ]
     }
 };

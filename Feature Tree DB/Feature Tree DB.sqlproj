@@ -7,7 +7,7 @@
     <Name>Feature_Tree_DB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{ea45afdb-75d4-4418-9b0f-63c92a91ac1b}</ProjectGuid>
+    <ProjectGuid>{dbdf95f4-9d8d-4727-b90f-4653beb2945f}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -61,7 +61,8 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Stored Procedure" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Issues.sql" />
@@ -69,5 +70,22 @@
     <Build Include="dbo\Tables\Status.sql" />
     <Build Include="dbo\Tables\StatusCategory.sql" />
     <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Update.sql" />
+    <Build Include="dbo\Tables\Projects.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Projects_Update.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Projects_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Project_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Select_ByProject.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Issues_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Users_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Status_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_StatusCategory_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Priority_Select.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Projects_Search.sql" />
+    <Build Include="dbo\Views\uvStatus.sql" />
+    <Build Include="dbo\Views\uvNodes.sql" />
+    <Build Include="dbo\Stored Procedures\upProc_Nodes_Select.sql" />
+    <Build Include="dbo\Tables\IssueTypes.sql" />
   </ItemGroup>
 </Project>

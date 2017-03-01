@@ -1,0 +1,43 @@
+﻿.node {
+   cursor:default;
+}
+.node text {
+    font: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: black;
+    font-weight: bold;
+}
+.node rect {
+  stroke: black;
+  stroke-width: 1px;
+}
+.control.glyphicon {
+    position: static;
+    color: black;
+}
+
+.link {
+  fill: none;
+  stroke: #424242;
+  stroke-width: 1.5px;
+}
+#canvas {
+  cursor: move;
+  height: 700px;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 1px solid #e7e7e7;
+  margin: 0px 0px 10px 0px;
+}
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  height: 20px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 4px;
+  pointer-events: none;
+}
