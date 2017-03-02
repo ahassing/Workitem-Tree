@@ -37,6 +37,15 @@ namespace Feature_Tree.DataRepository
 
         }
 
+        public int UpdateIssue(Issue value)
+        {
+            _dbContext.Entry(value).State = EntityState.Modified;
+
+          var issue =  _dbContext.SaveChanges();
+
+            return issue;
+        }
+
         public Issue CreateIssue(Issue value)
         {
             //try {

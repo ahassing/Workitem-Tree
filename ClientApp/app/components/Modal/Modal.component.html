@@ -2,7 +2,7 @@
 
 <!--<button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>-->
 
-<modal #modal>
+<modal #modal (onClose)="update();">
     <form #modalForm="ngForm">
         <modal-header [show-close]="true">
             <h4 class="modal-title">Edit a Node</h4>
@@ -34,10 +34,6 @@
                 <select type="string" [(ngModel)]="editIssue.issueAssignedUserId" name="assignedTo" class="form-control">
                     <option *ngFor="let user of users" value="{{user.userId}}">{{user.userName}}</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="DependentOn">DependentOn:</label>
-                <input type="text" class="form-control" required [(ngModel)]="editIssue.dependentOn" name="DependentOn" id="DependentOn">
             </div>
         </modal-body>
         <modal-footer>

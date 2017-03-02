@@ -1,4 +1,4 @@
-﻿import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+﻿import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalService, Status, Priority, User } from './modal.service';
@@ -21,7 +21,7 @@ import { ModalService, Status, Priority, User } from './modal.service';
     encapsulation: ViewEncapsulation.None,
     providers: [ModalService]
 })
-export class EditModalComponent   {
+export class EditModalComponent implements OnInit  {
 
     statuses: Status[];
     priorities: Priority[];
@@ -46,17 +46,17 @@ export class EditModalComponent   {
 
     constructor(private router: Router, private modalService: ModalService) { }
 
-    //ngOnInit() :void {
-    //    this.modalService.getStatusSL().subscribe(data => {
-    //        this.statuses = data;
-    //    });
-    //    this.modalService.getPrioritySL().subscribe(data => {
-    //        this.priorities = data;
-    //    });
-    //    this.modalService.getUserSL().subscribe(data => {
-    //        this.users = data;
-    //    });
-    //}
+    ngOnInit() :void {
+        this.modalService.getStatusSL().subscribe(data => {
+            this.statuses = data;
+        });
+        this.modalService.getPrioritySL().subscribe(data => {
+            this.priorities = data;
+        });
+        this.modalService.getUserSL().subscribe(data => {
+            this.users = data;
+        });
+    }
 
     //ngAfterViewInit() {
     //    this.modalService.getStatusSL().subscribe(data => {
@@ -72,16 +72,15 @@ export class EditModalComponent   {
       
     //}
 
-    closed() {
-        this.output = '(closed) ' + this.selected;
-        console.log('got to closed');
+    update() {
+       // subscribes to the service that makes the update api call
+        this.modalService.updateIssue(this.editIssue).subscribe();
     }
-
     dismissed() {
         this.output = '(dismissed)';
         this.editIssue = null;
     }
-
+   
     //opened() {
     //    this.output = '(opened)';
     //}
@@ -97,20 +96,21 @@ export class EditModalComponent   {
     }
 
     open() {
-        this.modalService.getStatusSL().subscribe(data => {
-            this.statuses = data;
-        });
-        this.modalService.getPrioritySL().subscribe(data => {
-            this.priorities = data;
-        });
-        this.modalService.getUserSL().subscribe(data => {
-            this.users = data;
-        });
+        //this.modalService.getStatusSL().subscribe(data => {
+        //    this.statuses = data;
+        //});
+        //this.modalService.getPrioritySL().subscribe(data => {
+        //    this.priorities = data;
+        //});
+        //this.modalService.getUserSL().subscribe(data => {
+        //    this.users = data;
+        //});
         this.modal.open();
     }
 }
 
 export class Issue {
+    issueId: number;
     issueTitle: string;
     issueDescription: string;
     issueStatusId: number;

@@ -1,5 +1,5 @@
 ﻿import { Injectable } from "@angular/core";
-import { Headers, Http, Response} from '@angular/http';
+import { Headers, Http, Response, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Issue } from './modal.component';
@@ -27,6 +27,14 @@ export class ModalService {
     getIssue(id: number): Observable<Issue> {
         return this.http.get('api/issue/' + id)
             .map((response: Response) => <Issue>response.json());
+    }
+
+    updateIssue(issue: Issue): Observable<Response> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put('api/issue/' + issue.issueId, JSON.stringify(issue), options);
+            
     }
 
     private handleError(error: Response) {

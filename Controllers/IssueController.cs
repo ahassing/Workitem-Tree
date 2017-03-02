@@ -43,10 +43,11 @@ namespace Feature_Tree.Controllers
             _BTfeatureTreeRepository.CreateIssue(value);
         }
 
-        // PUT api/values/5
+        // PUT api/issue/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Issue value)
         {
+            _BTfeatureTreeRepository.UpdateIssue(value);
         }
 
     }
