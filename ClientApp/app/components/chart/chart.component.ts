@@ -7,6 +7,7 @@ import 'bootstrap';
 import { EditModalComponent } from '../Modal/modal.component';
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
+import { Project } from '../projectlist/project';
 
 export type DataType = { x: any, y: any }
 
@@ -19,15 +20,20 @@ export type DataType = { x: any, y: any }
 })
 
 export class ChartComponent implements OnInit, OnDestroy {
-    id: number;
+
+    projectId: number;
+    projectTitle: string;
     private sub: any;
+    treeHasLoaded: boolean;
+
     //Add Child Component
     @ViewChild(EditModalComponent) myChild: EditModalComponent;
 
     // Initialize the component
     ngOnInit(): void {
+        this.treeHasLoaded = false;
         this.sub = this.route.params.subscribe(params => {
-            this.id = +params['id'];
+            this.projectId = +params['id'];
         this.getTreeData();
         }); // (+) converts string 'id' to a number
     }
@@ -39,9 +45,11 @@ export class ChartComponent implements OnInit, OnDestroy {
     // Get the data for the tree
     getTreeData(): void {
         let insertData = {};
-        this.treeNodeService.getTreeNodes(this.id).subscribe(data => {
+        this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
             insertData = data;
+            this.projectTitle = data.projectTitle;
             this.initTree({ id: "#canvas", data: insertData, modus: "line" });
+            this.treeHasLoaded = true;
         });        
     }
 
@@ -73,7 +81,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     private _callerNode = null;
     private _callerMode = 0;
 
-    constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute, private router: Router) { }
+    constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute, private router: Router) {}
 
 
     // This function collapses the nodes in the tree

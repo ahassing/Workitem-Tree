@@ -58,19 +58,6 @@ export class EditModalComponent implements OnInit  {
         });
     }
 
-    //ngAfterViewInit() {
-    //    this.modalService.getStatusSL().subscribe(data => {
-    //        this.statuses = data;
-    //    });
-    //    this.modalService.getPrioritySL().subscribe(data => {
-    //        this.priorities = data;
-    //    });
-    //    this.modalService.getUserSL().subscribe(data => {
-    //        this.users = data;
-  
-    //    });
-      
-    //}
 
     update() {
        // subscribes to the service that makes the update api call
@@ -88,6 +75,7 @@ export class EditModalComponent implements OnInit  {
     //navigate() {
     //    this.router.navigateByUrl('/hello');
     //}
+
     edit(id: number) {
         this.modalService.getIssue(id).subscribe(data => {
             this.editIssue = data;
@@ -96,15 +84,6 @@ export class EditModalComponent implements OnInit  {
     }
 
     open() {
-        //this.modalService.getStatusSL().subscribe(data => {
-        //    this.statuses = data;
-        //});
-        //this.modalService.getPrioritySL().subscribe(data => {
-        //    this.priorities = data;
-        //});
-        //this.modalService.getUserSL().subscribe(data => {
-        //    this.users = data;
-        //});
         this.modal.open();
     }
 }
