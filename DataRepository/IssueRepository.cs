@@ -48,16 +48,14 @@ namespace Feature_Tree.DataRepository
 
         public Issue CreateIssue(Issue value)
         {
-            //try {
-                _dbContext.Issues
-                    .FromSql("upProc_Issue_Insert {0} {1} {3} {4} {5} {6} {7} {8}" 
-                    ,value.IssueTitle, value.IssueDescription,value.IssueStatusId,value.IssuePriorityId,
-                    value.IssueCreatorUserId,value.IssueAssignedUserId,value.DependentOn,value.IssueProjectId);
-            //}
-            //catch (Exception e)
-            //{
+            value.IssueCreatorUserId = value.IssueAssignedUserId;
+            value.IssueOwnerUserId = value.IssueAssignedUserId;
 
-            //}
+            _dbContext.Entry(value).State = EntityState.Added;
+
+            _dbContext.SaveChanges();
+
+
             return null;
         }
 
