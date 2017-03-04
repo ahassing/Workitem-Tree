@@ -46,8 +46,8 @@ export class ChartComponent implements OnInit, OnDestroy {
     getTreeData(): void {
         let insertData = {};
         this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
-            insertData = data;
-            this.projectTitle = data.projectTitle;
+            insertData = data[0];
+            this.projectTitle = data[0].projectTitle;
             this.initTree({ id: "#canvas", data: insertData, modus: "line" });
             this.treeHasLoaded = true;
         });        

@@ -9,7 +9,7 @@ namespace Feature_Tree.IDataRepository
 {
   public  interface ITreeRepository
     {
-        Node GetTree(int projectId);
+        List<Node> GetTree(int projectId);
     }
 
 }

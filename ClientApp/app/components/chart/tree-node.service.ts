@@ -9,9 +9,9 @@ export class TreeNodeService {
 
     constructor(private http: Http) { }
 
-    getTreeNodes(id: number): Observable<TreeNode> {
+    getTreeNodes(id: number): Observable<TreeNode[]> {
         return this.http.get('api/tree/' + id)
-            .map((response: Response) => <TreeNode>response.json());
+            .map((response: Response) => <TreeNode[]>response.json());
 
     }
 
