@@ -182,23 +182,6 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return d.issueTitle;
             });
 
-        // adds status text label to the node
-        nodeEnter.append("text")
-            .attr("x", (this._rectW / 2) - 50)
-            .attr("y", this._rectH * 2 / 5)
-            .style("text-anchor", "start")
-            .text(function (d) {
-                return "Status:";
-            });
-
-        // adds status text to the node
-        nodeEnter.append("text")
-            .attr("x", this._rectW / 2)
-            .attr("y", this._rectH * 2 / 5)
-            .style("text-anchor", "start")
-            .text(function (d) {
-                return d.statusName;
-            });
 
         // adds node id label to the node
         nodeEnter.append("text")
@@ -216,24 +199,6 @@ export class ChartComponent implements OnInit, OnDestroy {
             .style("text-anchor", "start")
             .text(function (d) {
                 return d.issueId;
-            });
-
-        // adds parent id label to the node
-        nodeEnter.append("text")
-            .attr("x", (this._rectW / 2) - 50)
-            .attr("y", this._rectH * 4 / 5)
-            .style("text-anchor", "start")
-            .text(function (d) {
-                return "Parent:";
-            });
-
-        // adds parent id to the node
-        nodeEnter.append("text")
-            .attr("x", this._rectW / 2)
-            .attr("y", this._rectH * 4 / 5)
-            .style("text-anchor", "start")
-            .text(function (d) {
-                return d.dependentOn;
             });
 
         // adds edit button to the node
