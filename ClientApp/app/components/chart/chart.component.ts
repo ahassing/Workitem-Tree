@@ -236,31 +236,23 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return d.dependentOn;
             });
 
-        //nodeEnter.append("svg:foreignObject")
-        //    .attr("width", 20)
-        //    .attr("height", 20)
-        //    .attr("y", this._rectH - 145)
-        //    .attr("x", this._rectW - 20)
-        //    .append("xhtml:span")
-        //    .attr("class", 'control glyphicon glyphicon-edit');
-
         // adds edit button to the node
         nodeEnter.append("svg:foreignObject")
             .attr("width", 50)
             .attr("height", 20)
             .attr("y", this._rectH - 145)
-            .attr("x", this._rectW - 53)
-            .append("xhtml:button")
-            .attr("class", "btn btn-secondary btn-xs")
-            .attr("type", "button")
-            .text("Edit ")
+            .attr("x", this._rectW - 22)
+            .append("xhtml:div")
+            //.attr("class", "btn btn-secondary btn-xs")
+            //.attr("type", "button")
+            //.text("Edit ")
             .on('click', data => {     
                 this.myChild.edit(data.issueId);
                 //you should had imported 'Router' from '@angular/router'
                 //this.router.navigate(['modalTest']);
             })
             .append("xhtml:span")
-            .attr("class", 'control glyphicon glyphicon-edit');
+            .attr("class", 'control glyphicon glyphicon-pencil');
 
         nodeEnter.append("svg:foreignObject")
             .attr("width", 50)
