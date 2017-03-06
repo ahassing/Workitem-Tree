@@ -64,12 +64,12 @@ export class ChartComponent implements OnInit, OnDestroy {
         left: 20
     };
     private _root: TreeNode = null;
-    private _nodes = [];
+    private _nodes:any = [];
     private _counter = 0;
-    private _svgroot = null;
-    private _svg = null;
-    private _tree = null;
-    private _lineFunction = null;
+    private _svgroot:any = null;
+    private _svg:any = null;
+    private _tree:any = null;
+    private _lineFunction:any = null;
 
     /* Configuration */
     private _duration = 750;            /* Duration of the animations */
@@ -78,7 +78,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     private _rectSpacing = 20;          /* Spacing between the rectangles */
     private _fixedDepth = 80;           /* Height of the line for child nodes */
     private _mode = "line";             /* Choose the values "line" or "diagonal" */
-    private _callerNode = null;
+    private _callerNode:any = null;
     private _callerMode = 0;
 
     constructor(private treeNodeService: TreeNodeService, private route: ActivatedRoute, private router: Router) {}
@@ -103,18 +103,18 @@ export class ChartComponent implements OnInit, OnDestroy {
         let links = this._tree.links(this._nodes);
 
         // Normalize for fixed-depth.
-        this._nodes.forEach(d => (d.y = d.depth * this._fixedDepth * 3));
+        this._nodes.forEach((d:any) => (d.y = d.depth * this._fixedDepth * 3));
         
         // Update the nodes
         let node = this._svg.selectAll("g.node")
-            .data(this._nodes, d => {
+            .data(this._nodes, (d:any) => {
                 return d.id || (d.id = ++this._counter)
             });
 
         // Enter any new nodes at the parent's previous position.
         let nodeEnter = node.enter().append("g")
             .attr("class", "node")
-            .attr("transform", function (d) {
+            .attr("transform", function (d:any) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
            // .on("click", this.nodeClick());
@@ -123,17 +123,17 @@ export class ChartComponent implements OnInit, OnDestroy {
         nodeEnter.append("rect")
             .attr("width", this._rectW)
             .attr("height", this._rectH)
-            .attr("fill", function (d) {
+            .attr("fill", function (d:any) {
                 return d.statusCatColor;
             });
         
         nodeEnter.append("rect")
             .attr("width", this._rectW)
             .attr("height", this._rectH)
-            .attr("id", function (d) {
+            .attr("id", function (d:any) {
                 return d.issueId;
             })
-            .style("cursor", function (d) { "pointer"; })
+            .style("cursor", function (d:any) { "pointer"; })
             .attr("class", "box");
 
         // Add tooltip div to page
@@ -143,14 +143,14 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds image to node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d) {
+            .attr("xlink:href", function (d:any) {
                 return d.userAvatarPath;
             })
             .attr("x", "-25px")
             .attr("y", "25px")
             .attr("width", this._rectW / 2 + "px")
             .attr("height", this._rectH / 1.5 + "px")
-            .on("mouseover", function (d) { // Adds tooltip for assignee name on image
+            .on("mouseover", function (d:any) { // Adds tooltip for assignee name on image
                 div.transition()
                     .duration(200)
                     .style("opacity", 1);
@@ -158,7 +158,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                     .style("left", ((<any>d3.event).pageX) + "px")
                     .style("top", ((<any>d3.event).pageY - 28) + "px");
             })
-            .on("mouseout", function (d) {
+            .on("mouseout", function (d:any) {
                 div.transition()
                     .duration(500)
                     .style("opacity", 0);
@@ -169,7 +169,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", (this._rectW / 2) - 50)
             .attr("y", this._rectH / 5)
             .style("text-anchor", "start")
-            .text(function (d) {
+            .text(function (d:any) {
                 return "Title:";
             });
 
@@ -178,7 +178,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW / 2)
             .attr("y", this._rectH / 5)
             .style("text-anchor", "start")
-            .text(function (d) {
+            .text(function (d:any) {
                 return d.issueTitle;
             });
 
@@ -188,7 +188,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", (this._rectW / 2) - 50)
             .attr("y", this._rectH * 3 / 5)
             .style("text-anchor", "start")
-            .text(function (d) {
+            .text(function (d:any) {
                 return "Id:";
             });
 
@@ -197,7 +197,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW / 2)
             .attr("y", this._rectH * 3 / 5)
             .style("text-anchor", "start")
-            .text(function (d) {
+            .text(function (d:any) {
                 return d.issueId;
             });
 
@@ -245,7 +245,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             //.attr("class", "btn btn-secondary btn-xs")
             //.attr("type", "button")
             //.text("Edit ")
-            .on('click', data => {     
+            .on('click', (data:any) => {     
                 this.myChild.edit(data.issueId);
                 //you should had imported 'Router' from '@angular/router'
                 //this.router.navigate(['modalTest']);
@@ -267,32 +267,32 @@ export class ChartComponent implements OnInit, OnDestroy {
         // Transition nodes to their new position.
         let nodeUpdate = node.transition()
             .duration(this._duration)
-            .attr("transform", function (d) {
+            .attr("transform", function (d:any) {
                 return "translate(" + d.x + "," + d.y + ")";
             });
         nodeUpdate.select("rect.box")
-            .attr("fill", function (d) {
+            .attr("fill", function (d:any) {
                 return (d.children || d._children || d.hasChild) ? "url(#gradientchilds)" : "url(#gradientnochilds)";
             });
         // Transition exiting nodes to the parent's new position.
         let nodeExit = node.exit().transition()
             .duration(this._duration)
-            .attr("transform", function (d) {
+            .attr("transform", function (d:any) {
                 return "translate(" + source.x + "," + source.y + ")";
             })
             .remove();
 
         // Update the links
         let link = this._svg.selectAll("path.link")
-            .data(links, function (d) {
+            .data(links, function (d:any) {
                 return d.target.id;
             });
 
         // Enter any new links at the parent's previous position.
         link.enter().append("path", "g")
             .attr("class", "link")
-            .attr("d", d => {
-                let u_line = (d => {
+            .attr("d", (d:any) => {
+                let u_line = ((d:any) => {
                     let u_linedata = [{ "x": d.source.x0 + (this._rectW / 2), "y": d.source.y0 + this._rectH + 2 },
                         { "x": d.source.x0 + (this._rectW / 2), "y": d.source.y0 + this._rectH + 2 },
                         { "x": d.source.x0 + (this._rectW / 2), "y": d.source.y0 + this._rectH + 2 },
@@ -305,8 +305,8 @@ export class ChartComponent implements OnInit, OnDestroy {
         // Transition links to their new position. 
         link.transition()
             .duration(this._duration)
-            .attr("d", d => {
-                let u_line = (d => {
+            .attr("d", (d:any) => {
+                let u_line = ((d:any) => {
                     let u_linedata = [{ "x": d.source.x + (this._rectW / 2), "y": d.source.y + this._rectH },
                         { "x": d.source.x + (this._rectW / 2), "y": d.target.y - this._margin.top / 2 },
                         { "x": d.target.x + (this._rectW / 2), "y": d.target.y - this._margin.top / 2 },
@@ -319,9 +319,9 @@ export class ChartComponent implements OnInit, OnDestroy {
         // Transition exiting nodes to the parent's new position.
         link.exit().transition()
             .duration(this._duration)
-            .attr("d", d => {
+            .attr("d", (d:any) => {
                 /* This is needed to draw the lines right back to the caller */
-                let u_line = (d => {
+                let u_line = ((d:any) => {
                     let u_linedata = [{ "x": this._callerNode.x + (this._rectW / 2), "y": this._callerNode.y + this._rectH + 2 },
                         { "x": this._callerNode.x + (this._rectW / 2), "y": this._callerNode.y + this._rectH + 2 },
                         { "x": this._callerNode.x + (this._rectW / 2), "y": this._callerNode.y + this._rectH + 2 },
@@ -332,14 +332,14 @@ export class ChartComponent implements OnInit, OnDestroy {
             }).each("end", () => { this._callerNode = null; /* After transition clear the caller node letiable */ });
 
         // Stash the old positions for transition.
-        this._nodes.forEach(function (d) {
+        this._nodes.forEach(function (d:any) {
             d.x0 = d.x;
             d.y0 = d.y;
         });
     };
 
     // Toggle children on click.
-    nodeClick(): (d) => void {
+    nodeClick(): (d:any) => void {
         return (d) => {
             this._callerNode = d;
 
@@ -358,7 +358,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     };
 
     //Redraw for zoom
-    redraw(): (d, i) => void {       
+    redraw(): (d:any, i:any) => void {       
         return (d, i) => {
             this._svg.attr("transform", "translate(" + (<any>d3.event).translate + ")" +
                 " scale(" + (<any>d3.event).scale.toFixed(1) + ")");
@@ -366,7 +366,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     };
 
     // Set up the tree for the first time
-    initTree(options): void {
+    initTree(options:any): void {
         let u_opts = $.extend({
             id: "",
             data: {},
@@ -393,7 +393,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         let u_childwidth = ((this._root.children.length * this._rectW) / 2);
 
-        let zm = null;
+        let zm:any = null;
 
         // Set up the svg element on the page
         this._svgroot = d3.select(id)
