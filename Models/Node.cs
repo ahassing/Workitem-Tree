@@ -23,6 +23,8 @@ namespace Feature_Tree.Models
         public String TypeName { get; set; }
         public String UserAvatarPath { get; set; }
         public String PriorityImage { get; set; }
+        public String StatusImage { get; set; }
+        public String TypeImage { get; set; }
         public int? DependentOn { get; set; }
         public  List<Node> Children { get; set; }
     }

@@ -201,15 +201,39 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return d.issueId;
             });
 
+        // adds priority image to the node
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/priority/' + d.priorityImage);
+            })
+            .attr("x", this._rectW / 3)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+
         // adds status image to the node
-        //nodeEnter.append("image")
-        //    .attr("xlink:href", function (d) {
-        //        return "assets/icons/priority/" + d.priorityImage;
-        //    })
-        //    .attr("x", "0px")
-        //    .attr("y", "0px")
-        //    .attr("width", this._rectW / 4 + "px")
-        //    .attr("height", this._rectH / 2.5 + "px")
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/status/' + d.statusImage);
+            })
+            .attr("x", this._rectW / 3 + 30)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+
+        // adds type image to the node
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/issueTypes/' + d.typeImage);
+            })
+            .attr("x", this._rectW / 3 + 60)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+
 
         // adds edit button to the node
         nodeEnter.append("svg:foreignObject")

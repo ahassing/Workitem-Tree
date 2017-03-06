@@ -7,5 +7,7 @@ namespace Feature_Tree.Models
         [Key]
         public int TypeId { get; set; }
         public string TypeName { get; set; }
+        public string TypeImage { get; set; }
+       
     }
 }

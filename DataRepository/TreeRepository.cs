@@ -46,7 +46,9 @@ namespace Feature_Tree.DataRepository
                           UserAvatarPath = user.UserImagePath,
                           StatusName = status.StatusName,
                           PriorityName = priority.PriorityName,
-                          PriorityImage = priority.PriorityImage
+                          PriorityImage = priority.PriorityImage,
+                          TypeImage = issueType.TypeImage,
+                          StatusImage = status.StatusImage
                       };
 
             var config = new MapperConfiguration(cfg => cfg.CreateMissingTypeMaps = true);
