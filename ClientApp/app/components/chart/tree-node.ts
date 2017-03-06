@@ -5,6 +5,7 @@
     userName: string;
     issueDescription: string;
     priorityName: string;
+    priorityImage: string;
     statusName: string;
     typeName: string;
     statusCatName: string;
