@@ -103,37 +103,37 @@ export class ChartComponent implements OnInit, OnDestroy {
         let links = this._tree.links(this._nodes);
 
         // Normalize for fixed-depth.
-        this._nodes.forEach((d:any) => (d.y = d.depth * this._fixedDepth * 3));
-        
+        this._nodes.forEach((d: any) => (d.y = d.depth * this._fixedDepth * 3));
+
         // Update the nodes
         let node = this._svg.selectAll("g.node")
-            .data(this._nodes, (d:any) => {
+            .data(this._nodes, (d: any) => {
                 return d.id || (d.id = ++this._counter)
             });
 
         // Enter any new nodes at the parent's previous position.
         let nodeEnter = node.enter().append("g")
             .attr("class", "node")
-            .attr("transform", function (d:any) {
+            .attr("transform", function (d: any) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             })
-           // .on("click", this.nodeClick());
+        // .on("click", this.nodeClick());
 
         // Color the nodes based on the node color property
         nodeEnter.append("rect")
             .attr("width", this._rectW)
             .attr("height", this._rectH)
-            .attr("fill", function (d:any) {
+            .attr("fill", function (d: any) {
                 return d.statusCatColor;
             });
-        
+
         nodeEnter.append("rect")
             .attr("width", this._rectW)
             .attr("height", this._rectH)
-            .attr("id", function (d:any) {
+            .attr("id", function (d: any) {
                 return d.issueId;
             })
-            .style("cursor", function (d:any) { "pointer"; })
+            .style("cursor", function (d: any) { "pointer"; })
             .attr("class", "box");
 
         // Add tooltip div to page
@@ -143,14 +143,14 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds image to node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d:any) {
+            .attr("xlink:href", function (d: any) {
                 return d.userAvatarPath;
             })
             .attr("x", "-25px")
             .attr("y", "25px")
             .attr("width", this._rectW / 2 + "px")
             .attr("height", this._rectH / 1.5 + "px")
-            .on("mouseover", function (d:any) { // Adds tooltip for assignee name on image
+            .on("mouseover", function (d: any) { // Adds tooltip for assignee name on image
                 div.transition()
                     .duration(200)
                     .style("opacity", 1);
@@ -158,7 +158,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                     .style("left", ((<any>d3.event).pageX) + "px")
                     .style("top", ((<any>d3.event).pageY - 28) + "px");
             })
-            .on("mouseout", function (d:any) {
+            .on("mouseout", function (d: any) {
                 div.transition()
                     .duration(500)
                     .style("opacity", 0);
@@ -169,7 +169,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", (this._rectW / 2) - 50)
             .attr("y", this._rectH / 5)
             .style("text-anchor", "start")
-            .text(function (d:any) {
+            .text(function (d: any) {
                 return "Title:";
             });
 
@@ -178,7 +178,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW / 2)
             .attr("y", this._rectH / 5)
             .style("text-anchor", "start")
-            .text(function (d:any) {
+            .text(function (d: any) {
                 return d.issueTitle;
             });
 
@@ -188,7 +188,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", (this._rectW / 2) - 50)
             .attr("y", this._rectH * 3 / 5)
             .style("text-anchor", "start")
-            .text(function (d:any) {
+            .text(function (d: any) {
                 return "Id:";
             });
 
@@ -197,19 +197,81 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW / 2)
             .attr("y", this._rectH * 3 / 5)
             .style("text-anchor", "start")
-            .text(function (d:any) {
+            .text(function (d: any) {
                 return d.issueId;
             });
 
+        // adds priority image to the node
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d: any) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/priority/' + d.priorityImage);
+            })
+            .attr("x", this._rectW / 3)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+            .on("mouseover", function (d: any) { // Adds tooltip for assignee name on image
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                div.html("Priority: " + d.priorityName)
+                    .style("left", ((<any>d3.event).pageX) + "px")
+                    .style("top", ((<any>d3.event).pageY - 28) + "px");
+            })
+            .on("mouseout", function (d: any) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
         // adds status image to the node
-        //nodeEnter.append("image")
-        //    .attr("xlink:href", function (d:any) {
-        //        return "assets/icons/priority/" + d.priorityImage;
-        //    })
-        //    .attr("x", "0px")
-        //    .attr("y", "0px")
-        //    .attr("width", this._rectW / 4 + "px")
-        //    .attr("height", this._rectH / 2.5 + "px")
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d:any) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/status/' + d.statusImage);
+            })
+            .attr("x", this._rectW / 3 + 30)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+            .on("mouseover", function (d: any) { // Adds tooltip for assignee name on image
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                div.html("Status: " + d.statusName)
+                    .style("left", ((<any>d3.event).pageX) + "px")
+                    .style("top", ((<any>d3.event).pageY - 28) + "px");
+            })
+            .on("mouseout", function (d: any) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+
+        // adds type image to the node
+        nodeEnter.append("image")
+            .attr("xlink:href", function (d:any) {
+                //using require so webpack adds images to wwwroot during compilation
+                return require('../../assets/icons/issueTypes/' + d.typeImage);
+            })
+            .attr("x", this._rectW / 3 + 60)
+            .attr("y", this._rectH / 1.5)
+            .attr("width", "25px")
+            .attr("height", "25px")
+            .on("mouseover", function (d: any) { // Adds tooltip for assignee name on image
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                div.html("Type: " + d.typeName)
+                    .style("left", ((<any>d3.event).pageX) + "px")
+                    .style("top", ((<any>d3.event).pageY - 28) + "px");
+            })
+            .on("mouseout", function (d: any) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 
         // adds edit button to the node
         nodeEnter.append("svg:foreignObject")
