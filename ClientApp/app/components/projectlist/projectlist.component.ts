@@ -24,7 +24,7 @@ export class ProjectListComponent implements OnInit{
         });
     }
 
-    handleProjectClick(projectName) {
+    handleProjectClick(projectName:any) {
 
     }
 
