@@ -203,7 +203,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds priority image to the node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d) {
+            .attr("xlink:href", function (d:any) {
                 //using require so webpack adds images to wwwroot during compilation
                 return require('../../assets/icons/priority/' + d.priorityImage);
             })
@@ -214,7 +214,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds status image to the node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d) {
+            .attr("xlink:href", function (d:any) {
                 //using require so webpack adds images to wwwroot during compilation
                 return require('../../assets/icons/status/' + d.statusImage);
             })
@@ -225,7 +225,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds type image to the node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d) {
+            .attr("xlink:href", function (d:any) {
                 //using require so webpack adds images to wwwroot during compilation
                 return require('../../assets/icons/issueTypes/' + d.typeImage);
             })
