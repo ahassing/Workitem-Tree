@@ -227,7 +227,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds status image to the node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d:any) {
+            .attr("xlink:href", function (d: any) {
                 //using require so webpack adds images to wwwroot during compilation
                 return require('../../assets/icons/status/' + d.statusImage);
             })
@@ -251,7 +251,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds type image to the node
         nodeEnter.append("image")
-            .attr("xlink:href", function (d:any) {
+            .attr("xlink:href", function (d: any) {
                 //using require so webpack adds images to wwwroot during compilation
                 return require('../../assets/icons/issueTypes/' + d.typeImage);
             })
@@ -283,7 +283,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             //.attr("class", "btn btn-secondary btn-xs")
             //.attr("type", "button")
             //.text("Edit ")
-            .on('click', (data:any) => {     
+            .on('click', (data: any) => {
                 this.myChild.edit(data.issueId);
                 //you should had imported 'Router' from '@angular/router'
                 //this.router.navigate(['modalTest']);
@@ -295,8 +295,9 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("width", 50)
             .attr("height", 20)
             .attr("y", this._rectH - 20)
-            .attr("x", this._rectW /2 - 7)
+            .attr("x", this._rectW / 2 - 7)
             .append("xhtml:span")
+            .attr("id", (data: any) => { return "Node" + data.issueId; })
             .attr("class", (data: any) => {
                 if (data.tempChildren != null) {
                  return  data.tempChildren.length != 0 ? "control glyphicon glyphicon-menu-down" : "";
@@ -398,15 +399,18 @@ export class ChartComponent implements OnInit, OnDestroy {
     nodeClick(): (d:any) => void {
         return (d) => {
             this._callerNode = d;
-
             if (d.children) {
                 this._callerMode = 0;     // Collapse
                 d.tempChildren = d.children;
                 d.children = null;
+                // Toggles the collapse caret
+                $("#Node" + d.issueId).removeClass("glyphicon-menu-up").addClass("glyphicon-menu-down");
             } else {
                 this._callerMode = 1;     // Expand             
                 d.children = d.tempChildren;
                 d.tempChildren = null;
+                // Toggles the collapse caret
+                $("#Node" + d.issueId).removeClass("glyphicon-menu-down").addClass("glyphicon-menu-up");
             }
 
             this.update(d);
