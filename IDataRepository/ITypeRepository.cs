@@ -9,5 +9,6 @@ namespace Feature_Tree.IDataRepository
    public interface ITypeRepository
     {
         IEnumerable<IssueType> getIssueTypes();
+        IssueType getIssueType(int id);
     }
 }

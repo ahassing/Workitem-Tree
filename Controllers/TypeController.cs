@@ -30,9 +30,9 @@ namespace Feature_Tree.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IssueType Get(int id)
         {
-            return "value";
+            return _BTfeatureTreeRepository.getIssueType(id);
         }
 
         // POST api/values

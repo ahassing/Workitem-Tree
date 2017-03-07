@@ -19,5 +19,10 @@ namespace Feature_Tree.DataRepository
         {
           return  _dbContext.IssueTypes.ToList();
         }
+
+        public IssueType getIssueType(int id)
+        {
+            return _dbContext.IssueTypes.FirstOrDefault();
+        }
     }
 }
