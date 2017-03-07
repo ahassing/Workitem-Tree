@@ -72,6 +72,7 @@ export class TreeModalComponent implements OnInit  {
         {
             this.modalService.createIssue(this.model).subscribe();
         } 
+        
     }
     dismissed() {
         this.output = '(dismissed)';

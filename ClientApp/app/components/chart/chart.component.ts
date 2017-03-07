@@ -297,7 +297,14 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("y", this._rectH - 20)
             .attr("x", this._rectW /2 - 7)
             .append("xhtml:span")
-            .attr("class", "control glyphicon glyphicon-menu-down")
+            .attr("class", (data: any) => {
+                if (data.tempChildren != null) {
+                 return  data.tempChildren.length != 0 ? "control glyphicon glyphicon-menu-down" : "";
+                }
+                if (data.children != null) {
+                    return data.children.length != 0 ? "control glyphicon glyphicon-menu-down" : "";
+                }
+            })
             .on("click", this.nodeClick());
             
         // adds create button to the node
@@ -308,7 +315,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW - 42)
             .append("xhtml:div")
             .on('click', (data: any) => {
-                this.myChild.createChild(data.issueId, data.projectId);
+                this.myChild.createChild(data.issueId, data.projectId); 
             })
             .append("xhtml:span")
             .attr("class", 'control glyphicon glyphicon-plus');
