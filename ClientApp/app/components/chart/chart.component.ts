@@ -436,8 +436,8 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         /* Basic setup for the line function. _mode = "line" */
         this._lineFunction = d3.svg.line<DataType>()
-            .x(function (d) { return d.x; })
-            .y(function (d) { return d.y; })
+            .x(function (d:any) { return d.x; })
+            .y(function (d:any) { return d.y; })
             .interpolate("linear");
 
         let u_childwidth = ((this._root.children.length * this._rectW) / 2);
