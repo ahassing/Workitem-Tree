@@ -1,7 +1,7 @@
 ﻿import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { ModalService, Status, Priority, User } from './modal.service';
+import { ModalService, Status, Priority, User, IssueType } from './modal.service';
 
 @Component({
 
@@ -21,12 +21,13 @@ import { ModalService, Status, Priority, User } from './modal.service';
     encapsulation: ViewEncapsulation.None,
     providers: [ModalService]
 })
-export class EditModalComponent implements OnInit  {
+export class TreeModalComponent implements OnInit  {
 
     statuses: Status[];
     priorities: Priority[];
     users: User[];
-    editIssue: Issue = new Issue();
+    types: IssueType[];
+    modalTitle: string;
 
     @ViewChild('modal')
     modal: ModalComponent;
@@ -46,7 +47,8 @@ export class EditModalComponent implements OnInit  {
 
     constructor(private router: Router, private modalService: ModalService) { }
 
-    ngOnInit() :void {
+    ngOnInit(): void {
+        //Initializes the select lists once for all node edits
         this.modalService.getStatusSL().subscribe(data => {
             this.statuses = data;
         });
@@ -56,33 +58,44 @@ export class EditModalComponent implements OnInit  {
         this.modalService.getUserSL().subscribe(data => {
             this.users = data;
         });
+        this.modalService.getIssueTypeSL().subscribe(data => {
+            this.types = data;
+        });
     }
 
 
-    update() {
-       // subscribes to the service that makes the update api call
-        this.modalService.updateIssue(this.editIssue).subscribe();
+    save() {
+        if (this.modalTitle == 'Edit') {
+            // subscribes to the service that makes the update api call
+            this.modalService.updateIssue(this.model).subscribe();
+        } else
+        {
+            this.modalService.createIssue(this.model).subscribe();
+        } 
     }
     dismissed() {
         this.output = '(dismissed)';
-        this.editIssue = null;
+        //this.modalTitle = null;
+        //this.model = null;
     }
-   
-    //opened() {
-    //    this.output = '(opened)';
-    //}
-
-    //navigate() {
-    //    this.router.navigateByUrl('/hello');
-    //}
-
-    edit(id: number) {
-        this.modalService.getIssue(id).subscribe(data => {
-            this.editIssue = data;
-        });
+   // loads the modal to create a child node
+    createChild(id: number, projectId: number) {
+        this.modalTitle = 'Create Child'
+        this.model = new Issue();
+        this.model.dependentOn = id;
+        this.model.issueProjectId = projectId;
+        //this.model.issueId = 0;
         this.open();
     }
-
+    // loads the modal and edit data for the issueId passed in
+    edit(id: number) {
+        this.modalService.getIssue(id).subscribe(data => {
+            this.model = data;
+        });
+        this.modalTitle = 'Edit';
+        this.open();
+    }
+    // called to open the modal dialog
     open() {
         this.modal.open();
     }
@@ -92,6 +105,7 @@ export class Issue {
     issueId: number;
     issueTitle: string;
     issueDescription: string;
+    issueType: number;
     issueStatusId: number;
     issuePriorityId: number;
     issueCreatorUserId: string;

@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'bootstrap';
-import { EditModalComponent } from '../Modal/modal.component';
+import { TreeModalComponent } from '../Modal/modal.component';
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
 import { Project } from '../projectlist/project';
@@ -27,7 +27,7 @@ export class ChartComponent implements OnInit, OnDestroy {
     private sub: any;
     treeHasLoaded: boolean;
     //Add Child Component
-    @ViewChild(EditModalComponent) myChild: EditModalComponent;
+    @ViewChild(TreeModalComponent) myChild: TreeModalComponent;
 
     // Initialize the component
     ngOnInit(): void {
@@ -275,8 +275,8 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         // adds edit button to the node
         nodeEnter.append("svg:foreignObject")
-            .attr("width", 50)
-            .attr("height", 20)
+            //.attr("width", 25)
+            //.attr("height", 20)
             .attr("y", this._rectH - 145)
             .attr("x", this._rectW - 22)
             .append("xhtml:div")
@@ -300,7 +300,18 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("class", "control glyphicon glyphicon-menu-down")
             .on("click", this.nodeClick());
             
-
+        // adds create button to the node
+        nodeEnter.append("svg:foreignObject")
+            //.attr("width", 20)
+            //.attr("height", 20)
+            .attr("y", this._rectH - 145)
+            .attr("x", this._rectW - 42)
+            .append("xhtml:div")
+            .on('click', (data: any) => {
+                this.myChild.createChild(data.issueId, data.projectId);
+            })
+            .append("xhtml:span")
+            .attr("class", 'control glyphicon glyphicon-plus');
 
         // Transition nodes to their new position.
         let nodeUpdate = node.transition()

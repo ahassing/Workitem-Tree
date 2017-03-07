@@ -36,7 +36,7 @@ namespace Feature_Tree.Controllers
             return _BTfeatureTreeRepository.GetIssue(id);
         }
 
-        // POST api/values
+        // POST api/issue
         [HttpPost]
         public void Post([FromBody]Issue value)
         {

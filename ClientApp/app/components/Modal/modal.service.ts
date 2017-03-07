@@ -24,6 +24,11 @@ export class ModalService {
             .map((response: Response) => <User[]>response.json());
     }
 
+    getIssueTypeSL(): Observable<IssueType[]> {
+        return this.http.get('api/type/')
+            .map((response: Response) => <IssueType[]>response.json());
+    }
+
     getIssue(id: number): Observable<Issue> {
         return this.http.get('api/issue/' + id)
             .map((response: Response) => <Issue>response.json());
@@ -35,6 +40,13 @@ export class ModalService {
 
         return this.http.put('api/issue/' + issue.issueId, JSON.stringify(issue), options);
             
+    }
+
+    createIssue(issue: Issue): Observable<Response> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('api/issue/', JSON.stringify(issue), options);
     }
 
     private handleError(error: Response) {
@@ -58,4 +70,10 @@ export class User {
     userId: string;
     userName: string;
     userImagePath: string;
+}
+
+export class IssueType {
+    typeId: number;
+    typeName: string;
+    typeImage: string;
 }

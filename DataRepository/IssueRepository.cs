@@ -50,7 +50,8 @@ namespace Feature_Tree.DataRepository
         {
             value.IssueCreatorUserId = value.IssueAssignedUserId;
             value.IssueOwnerUserId = value.IssueAssignedUserId;
-
+            value.DateCreated = DateTime.Now;
+            value.IssueDescription = value.IssueDescription == null ? "" : value.IssueDescription;
             _dbContext.Entry(value).State = EntityState.Added;
 
             _dbContext.SaveChanges();
