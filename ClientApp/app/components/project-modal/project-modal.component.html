@@ -1,0 +1,21 @@
+﻿<script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>
+
+<!--<button type="button" class="btn btn-default" (click)="validationModal.open()">With form validation</button>-->
+
+<modal #modal (onClose)="save();">
+    <form #modalForm="ngForm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">{{modalTitle}}</h4>
+        </modal-header>
+        <modal-body>
+            <div class="form-group">
+                <label for="issueTitle">Title:</label>
+                <input type="text" class="form-control" required [(ngModel)]="model.projectTitle" name="ProjectTitle" id="ProjectTitle">
+            </div>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+            <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="modal.close()">Save</button>
+        </modal-footer>
+    </form>
+</modal>

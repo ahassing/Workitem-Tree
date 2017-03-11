@@ -1,5 +1,6 @@
 ﻿import { Component, Input } from '@angular/core';
 import { Project } from './project';
+import { ProjectModalComponent } from '../project-modal/project-modal.component';
 
 
 

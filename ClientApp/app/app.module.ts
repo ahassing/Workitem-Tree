@@ -12,6 +12,7 @@ import { ProjectListComponent } from './components/projectlist/projectlist.compo
 import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
 import { ProjectListService } from './components/projectlist/projectlist-service';
 import { ModalService } from './components/modal/modal.service';
+import { ProjectModalComponent } from './components/project-modal/project-modal.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ModalService } from './components/modal/modal.service';
         HomeComponent,
         ProjectListComponent,
         ProjectThumbnailComponent,
-        TreeModalComponent
+        TreeModalComponent, 
+        ProjectModalComponent
     ],
     providers: [ProjectListService],
     imports: [

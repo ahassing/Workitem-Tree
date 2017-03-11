@@ -10,5 +10,7 @@ namespace Feature_Tree.IDataRepository
     {
         IEnumerable<Project> ListAll();
         Project GetProject(int projectId);
+        int UpdateProject(Project project);
+        Project CreateProject(Project project);
     }
 }
