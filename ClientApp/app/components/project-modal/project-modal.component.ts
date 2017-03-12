@@ -2,6 +2,8 @@
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ProjectModalService} from './project-modal.service';
+import { Project } from '../projectlist/project';
+import 'bootstrap';
 
 @Component({
 
@@ -21,12 +23,9 @@ import { ProjectModalService} from './project-modal.service';
     encapsulation: ViewEncapsulation.None,
     providers: [ProjectModalService]
 })
-export class ProjectModalComponent implements OnInit  {
+export class ProjectModalComponent  {
 
-    //statuses: Status[];
-    //priorities: Priority[];
-    //users: User[];
-    //types: IssueType[];
+
     modalTitle: string;
 
     @ViewChild('modal')
@@ -47,21 +46,7 @@ export class ProjectModalComponent implements OnInit  {
 
     constructor(private router: Router, private modalService: ProjectModalService) { }
 
-    ngOnInit(): void {
-        ////Initializes the select lists once for all node edits
-        //this.modalService.getStatusSL().subscribe(data => {
-        //    this.statuses = data;
-        //});
-        //this.modalService.getPrioritySL().subscribe(data => {
-        //    this.priorities = data;
-        //});
-        //this.modalService.getUserSL().subscribe(data => {
-        //    this.users = data;
-        //});
-        //this.modalService.getIssueTypeSL().subscribe(data => {
-        //    this.types = data;
-        //});
-    }
+
 
 
     save() {
@@ -76,20 +61,16 @@ export class ProjectModalComponent implements OnInit  {
     }
     dismissed() {
         this.output = '(dismissed)';
-        //this.modalTitle = null;
-        //this.model = null;
     }
-   // loads the modal to create a child node
-    createChild(id: number ) {//, projectId: number) {
+   // loads the modal to create a project
+    createProject() {
         this.modalTitle = 'Create Project'
         this.model = new Project();
-        //this.model.dependentOn = id;
-        //this.model.issueProjectId = projectId;
-        //this.model.issueId = 0;
+        this.model.projectId = 0;
         this.open();
     }
     // loads the modal and edit data for the issueId passed in
-    edit(id: number) {
+    editProject(id: number) {
         this.modalService.getProject(id).subscribe(data => {
             this.model = data;
         });
@@ -100,9 +81,4 @@ export class ProjectModalComponent implements OnInit  {
     open() {
         this.modal.open();
     }
-}
-
-export class Project {
-    projectId: number;
-    projectTitle: string;
 }

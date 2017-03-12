@@ -2,7 +2,7 @@
 import { Headers, Http, Response, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Project } from './project-modal.component';
+import { Project } from '../projectlist/project';
 
 @Injectable()
 export class ProjectModalService {

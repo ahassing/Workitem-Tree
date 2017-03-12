@@ -35,14 +35,14 @@ namespace Feature_Tree.Controllers
             return _BTfeatureTreeRepository.GetProject(id);
         }
 
-        // POST api/values
+        // POST api/project
         [HttpPost]
         public void Post([FromBody]Project value)
         {
             _BTfeatureTreeRepository.CreateProject(value);
         }
 
-        // PUT api/values/5
+        // PUT api/project/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Project value)
         {

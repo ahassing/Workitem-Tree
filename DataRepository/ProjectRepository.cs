@@ -32,17 +32,13 @@ namespace Feature_Tree.DataRepository
         {
             _dbContext.Entry(value).State = EntityState.Modified;
 
-            var issue = _dbContext.SaveChanges();
+            var project = _dbContext.SaveChanges();
 
-            return issue;
+            return project;
         }
 
         public Project CreateProject(Project value)
         {
-            //value.IssueCreatorUserId = value.IssueAssignedUserId;
-            //value.IssueOwnerUserId = value.IssueAssignedUserId;
-            //value.DateCreated = DateTime.Now;
-            //value.IssueDescription = value.IssueDescription == null ? "" : value.IssueDescription;
             _dbContext.Entry(value).State = EntityState.Added;
 
             _dbContext.SaveChanges();
