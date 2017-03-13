@@ -1,4 +1,5 @@
 ﻿<div class="well hoverwell thumbnail">
-    <h3>{{project.projectId}} - {{project.projectTitle}}</h3>
-    <span class="control glyphicon glyphicon-pencil" title="Edit Project"></span>
+    <project-modal-component></project-modal-component>
+    <h3 routerLink="/project/{{project.projectId}}" >{{project.projectId}} - {{project.projectTitle}}</h3>
+    <span class="control glyphicon glyphicon-pencil" title="Edit Project" (click)="this.editProject()"></span>
 </div>

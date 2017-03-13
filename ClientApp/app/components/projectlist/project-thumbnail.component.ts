@@ -1,6 +1,7 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, ViewChild} from '@angular/core';
 import { Project } from './project';
 import { ProjectModalComponent } from '../project-modal/project-modal.component';
+import 'bootstrap';
 
 
 
@@ -16,4 +17,10 @@ import { ProjectModalComponent } from '../project-modal/project-modal.component'
 export class ProjectThumbnailComponent {
 
     @Input() project: Project
+    @ViewChild(ProjectModalComponent) modalChild: ProjectModalComponent;
+
+    editProject()
+    {
+    this.modalChild.editProject(this.project.projectId);
+    }
 }

@@ -7,7 +7,7 @@ import { Project } from './project';
     template: `
         <div class="row">
             <div *ngFor="let project of projects" class="col-md-4">
-                    <project-thumbnail routerLink="/project/{{project.projectId}}" [project]="project"></project-thumbnail>
+                    <project-thumbnail [project]="project"></project-thumbnail>
             </div>
         </div>
     `

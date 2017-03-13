@@ -74,7 +74,7 @@ export class ProjectModalComponent  {
         this.modalService.getProject(id).subscribe(data => {
             this.model = data;
         });
-        this.modalTitle = 'Edit';
+        this.modalTitle = 'Edit Project';
         this.open();
     }
     // called to open the modal dialog
