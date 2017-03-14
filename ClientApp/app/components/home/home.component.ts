@@ -8,6 +8,7 @@ import { ProjectModalComponent } from '../project-modal/project-modal.component'
         #main { padding-left: 30px; 
                 padding-right: 30px;
                 }
+        .glyphicon-plus { cursor: pointer; }
     `] 
 })
 export class HomeComponent {
