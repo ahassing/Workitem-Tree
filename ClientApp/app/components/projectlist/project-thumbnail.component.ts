@@ -12,6 +12,7 @@ import 'bootstrap';
     .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }
+    .glyphicon-pencil { float: right; }
     `]
 })
 export class ProjectThumbnailComponent {
