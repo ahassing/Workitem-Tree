@@ -1,4 +1,4 @@
-﻿import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
+﻿import {Component, ViewChild, ViewEncapsulation, OnInit, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { ModalService, Status, Priority, User, IssueType } from './modal.service';
@@ -63,16 +63,22 @@ export class TreeModalComponent implements OnInit  {
         });
     }
 
+    @Output()
+    refreshData: EventEmitter<string> = new EventEmitter();
+    //Emits an event that the parent component listens for. The Chart component refreshes the data when it recieves this event.
+    saveComplete() {
+        this.refreshData.emit('Refresh');
+    }
 
     save() {
         if (this.modalTitle == 'Edit') {
             // subscribes to the service that makes the update api call
-            this.modalService.updateIssue(this.model).subscribe();
+            this.modalService.updateIssue(this.model).subscribe(() => {this.saveComplete() });
         } else
         {
-            this.modalService.createIssue(this.model).subscribe();
+            this.modalService.createIssue(this.model).subscribe(() => { this.saveComplete() });
         } 
-        
+        this.saveComplete();
     }
     dismissed() {
         this.output = '(dismissed)';

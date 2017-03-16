@@ -482,10 +482,10 @@ export class ChartComponent implements OnInit, OnDestroy {
         this._root.x0 = 0;           // the root is already centered
         this._root.y0 = height / 2;  // draw & animate from center
 
-        // Collapses the child nodes on init.
-        //for (let i = 0; i < this._root.children.length; i++) {
-        //    this.collapse(this._root.children[i]);
-        //}
+         //Collapses the child nodes on init.
+        for (let i = 0; i < this._root.children.length; i++) {
+            this.collapse(this._root.children[i]);
+        }
                 
         this.update(this._root);
         d3.select(id).style("height", height + this._margin.top + this._margin.bottom);
