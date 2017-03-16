@@ -12,6 +12,10 @@
                 <label for="issueTitle">Title:</label>
                 <input type="text" class="form-control" required [(ngModel)]="model.projectTitle" name="ProjectTitle" id="ProjectTitle">
             </div>
+            <div class="form-group">
+                <label for="issueTitle">Description:</label>
+                <input type="text" class="form-control" required [(ngModel)]="model.projectDescription" name="ProjectDescription" id="ProjectDescription">
+            </div>
         </modal-body>
         <modal-footer>
             <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>

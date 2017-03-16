@@ -12,6 +12,7 @@ namespace Feature_Tree.Models
 
         public int ProjectId { get; set; }
         public string ProjectTitle { get; set; }
+        public string ProjectDescription { get; set; }
 
         public virtual ICollection<Issue> Issues { get; set; }
     }
