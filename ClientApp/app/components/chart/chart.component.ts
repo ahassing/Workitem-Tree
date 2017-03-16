@@ -54,13 +54,16 @@ export class ChartComponent implements OnInit, OnDestroy {
     }
 
     refresh() {
+        $('#refreshGlyph').addClass('glyphicon-refresh-animate');
         let updatedData = {};
         this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
             updatedData = data[0];
             this.initTree({
                 id: "#canvas", data: updatedData, modus: "line"
             });    
+            $('#refreshGlyph').removeClass('glyphicon-refresh-animate');
         });
+
     }
 
     // The starter code for this script was obtained from
