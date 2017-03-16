@@ -53,6 +53,16 @@ export class ChartComponent implements OnInit, OnDestroy {
         });        
     }
 
+    refresh() {
+        let updatedData = {};
+        this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
+            updatedData = data[0];
+            this.initTree({
+                id: "#canvas", data: updatedData, modus: "line"
+            });    
+        });
+    }
+
     // The starter code for this script was obtained from
     // https://github.com/BernhardZuba/d3js-orgchart
     // The MIT License (MIT)
@@ -300,10 +310,10 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("id", (data: any) => { return "Node" + data.issueId; })
             .attr("class", (data: any) => {
                 if (data.tempChildren != null) {
-                 return  data.tempChildren.length != 0 ? "control glyphicon glyphicon-menu-down" : "";
+                 return  data.tempChildren.length != 0 ? "control glyphicon glyphicon-menu-up" : "";
                 }
                 if (data.children != null) {
-                    return data.children.length != 0 ? "control glyphicon glyphicon-menu-down" : "";
+                    return data.children.length != 0 ? "control glyphicon glyphicon-menu-up" : "";
                 }
             })
             .on("click", this.nodeClick());
@@ -316,7 +326,7 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("x", this._rectW - 42)
             .append("xhtml:div")
             .on('click', (data: any) => {
-                this.myChild.createChild(data.issueId, data.projectId); 
+                this.myChild.createChild(data.issueId, data.projectId);
             })
             .append("xhtml:span")
             .attr("class", 'control glyphicon glyphicon-plus');
@@ -472,9 +482,10 @@ export class ChartComponent implements OnInit, OnDestroy {
         this._root.x0 = 0;           // the root is already centered
         this._root.y0 = height / 2;  // draw & animate from center
 
-        for (let i = 0; i < this._root.children.length; i++) {
-            this.collapse(this._root.children[i]);
-        }
+        // Collapses the child nodes on init.
+        //for (let i = 0; i < this._root.children.length; i++) {
+        //    this.collapse(this._root.children[i]);
+        //}
                 
         this.update(this._root);
         d3.select(id).style("height", height + this._margin.top + this._margin.bottom);

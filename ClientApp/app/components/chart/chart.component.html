@@ -7,6 +7,7 @@
 
 <!--ngIf ensures that the title does not load before the chart does.-->
 <h2 *ngIf="treeHasLoaded">{{projectId}} | {{projectTitle}}</h2>
+<button type="button" class="btn btn-primary btn-sm" (click)="this.refresh()"><span class="glyphicon glyphicon-refresh"></span></button>
         <div id="canvas">
             <modal-component></modal-component>
         </div>
