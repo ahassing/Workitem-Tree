@@ -1,16 +1,19 @@
 ﻿.node {
-   cursor:default;
+    cursor: pointer;
 }
-.node text {
-    font: 14px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    fill: white;
-    font-weight: bold;
-}
-.node rect {
-  stroke: black;
-  stroke-width: 1px;
-}
+
+    .node text {
+        font: 14px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        fill: white;
+        font-weight: bold;
+    }
+
+    .node rect {
+        stroke: black;
+        stroke-width: 1px;
+    }
+
 .control.glyphicon {
     position: static;
     color: white;
@@ -24,37 +27,62 @@
 
 
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
 }
 
 .link {
-  fill: none;
-  stroke: #424242;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: #424242;
+    stroke-width: 1.5px;
 }
+
 #canvas {
-  cursor: move;
-  height: 700px;
-  width: 100%;
-  background-color: #f5f5f5;
-  border: 1px solid #e7e7e7;
-  margin: 0px 0px 10px 0px;
+    cursor: move;
+    height: 700px;
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #e7e7e7;
 }
+
 div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 150px;
-  height: 20px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 4px;
-  pointer-events: none;
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 20px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 10px;
+}
+
+.ghostCircle.show {
+    display: block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle {
+    display: none;
 }
