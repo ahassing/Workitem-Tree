@@ -72,6 +72,15 @@ export class ChartComponent implements OnInit, OnDestroy {
         $('#refreshGlyph').removeClass('glyphicon-refresh-animate');
     };
 
+    /*
+        Two online D3 examples were used to lay the foundation for this ChartComponent class.
+        The organization chart look was referenced from the following github page
+            https://github.com/BernhardZuba/d3js-orgchart/blob/master/index.htm
+
+        The drag and drop behavior was referenced from the following block page
+            http://bl.ocks.org/robschmuecker/7880033
+    */
+
     private root: TreeNode = null;
     // variable for getting all the nodes at any one time
     private nodes: any = null;
@@ -519,7 +528,6 @@ export class ChartComponent implements OnInit, OnDestroy {
             .text(function (d: any) {
                 return d.issueTitle;
             });
-
 
         // adds node id label to the node
         nodeEnter.append("text")
