@@ -1,6 +1,10 @@
 ﻿<div class="well hoverwell thumbnail">
     <project-modal-component></project-modal-component>
     <span class="glyphicon glyphicon-pencil" title="Edit Project" (click)="this.editProject()"></span>
-    <h3><a routerLink="/project/{{project.projectId}}" style="color: #000000">{{project.projectId}} - {{project.projectTitle}}</a></h3>
+    <h3>
+        <a routerLink="/project/{{project.projectId}}" style="color: #000000">
+            {{project.projectId}} - {{this.titleFormat(project.projectTitle, 150)}}
+        </a>
+    </h3>
     <h5>{{project.projectDescription}}</h5>
 </div>

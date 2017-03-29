@@ -9,7 +9,7 @@ import 'bootstrap';
     selector: 'project-thumbnail',
     template: require('./project-thumbnail.component.html'),
     styles: [`
-    .thumbnail { min-height: 210px; }
+    .thumbnail { height: 210px; }
     .pad-left { margin-left: 10px; }
     .well div { color: #bbb; }
     .glyphicon-pencil { float: right; cursor: pointer; }
@@ -23,5 +23,13 @@ export class ProjectThumbnailComponent {
     editProject()
     {
     this.modalChild.editProject(this.project.projectId);
+    }
+
+    titleFormat(projectName: String, length: number) {
+        if (projectName.length > length) {
+            return projectName.substr(0, length) + "...";
+        } else {
+            return projectName;
+        }
     }
 }
