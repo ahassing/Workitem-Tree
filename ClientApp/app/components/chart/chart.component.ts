@@ -372,7 +372,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return;
             }
 
-            this.domNode = this;
+            self.domNode = this;
 
             // This block of code does the insert of the dragged node into a node that it is drop onto.
             if (self.selectedNode) {
