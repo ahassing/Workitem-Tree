@@ -59,7 +59,7 @@ export class ChartComponent implements OnInit, OnDestroy {
         this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
             updateData = data[0];
             this.projectTitle = data[0].projectTitle;
-            
+
             this.performTreeRefresh(updateData);
             this.treeHasLoaded = true;
         });
@@ -524,7 +524,25 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("y", this.rectH / 5)
             .style("text-anchor", "start")
             .text(function (d: any) {
-                return d.issueTitle;
+                if (d.issueTitle.length > 25) {
+                    let trimmed = d.issueTitle.substring(0, 20) + "...";
+                    return trimmed;
+                }
+                else {
+                    return d.issueTitle;
+                }
+            }).on("mouseover", function (d: any) { // Adds tooltip for issue titles
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                div.html("Priority: " + d.issueTitle)
+                    .style("left", ((<any>d3.event).pageX) + "px")
+                    .style("top", ((<any>d3.event).pageY - 28) + "px");
+            })
+            .on("mouseout", function (d: any) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
 
         // adds node id label to the node
