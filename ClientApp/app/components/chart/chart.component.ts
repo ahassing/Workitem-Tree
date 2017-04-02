@@ -53,22 +53,17 @@ export class ChartComponent implements OnInit, OnDestroy {
     };
 
     // Refresh button without having to use the browser button
-    // This is causing some strange errors in the console sometimes.
     refresh() {
         $('#refreshGlyph').addClass('glyphicon-refresh-animate');
-        let updateData: TreeNode = null;
+        let updateData = {};
         this.treeNodeService.getTreeNodes(this.projectId).subscribe(data => {
             updateData = data[0];
-            //this.projectTitle = data[0].projectTitle;
-            // TODO get rid of Happy refresh once testing done and replace with above commented code.
-            this.projectTitle = "Happy refresh!";
-            this.root = updateData;
+            this.projectTitle = data[0].projectTitle;
 
-            // I replaced the line calling initTree since that has the side effect of appending a
-            // svg below the current one which doesn't achieve the effect of updating the current svg.
-            this.update(this.root);
+            this.performTreeRefresh(updateData);
             this.treeHasLoaded = true;
         });
+
         $('#refreshGlyph').removeClass('glyphicon-refresh-animate');
     };
 
@@ -81,6 +76,8 @@ export class ChartComponent implements OnInit, OnDestroy {
             http://bl.ocks.org/robschmuecker/7880033
     */
 
+    private lastInteractedNode: TreeNode = null;
+
     private root: TreeNode = null;
     // variable for getting all the nodes at any one time
     private nodes: any = null;
@@ -91,8 +88,6 @@ export class ChartComponent implements OnInit, OnDestroy {
     // The node being dragged
     private draggingNode: any = null;
     private dragStarted = false;
-    // The node being toggled
-    private callerNode: any = null;
 
     // used for assigning an id to each node in the html
     private counter = 0;
@@ -225,8 +220,11 @@ export class ChartComponent implements OnInit, OnDestroy {
         d3.select(this.domNode).select('.ghostCircle').attr('pointer-events', '');
         this.updateTempConnector();
         if (this.draggingNode !== null) {
-            this.update(this.root);
+            this.update(this.draggingNode);
             this.centerNode(this.draggingNode);
+
+            this.lastInteractedNode = this.draggingNode;
+
             this.draggingNode = null;
         }
     };
@@ -265,7 +263,6 @@ export class ChartComponent implements OnInit, OnDestroy {
 
     // This function shifts the children and tempChildren for the expand/collapse functions
     toggleChildren(d: any) {
-        this.callerNode = d;
 
         if (d.children) {
             d.tempChildren = d.children;
@@ -375,7 +372,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return;
             }
 
-            this.domNode = this;
+            self.domNode = this;
 
             // This block of code does the insert of the dragged node into a node that it is drop onto.
             if (self.selectedNode) {
@@ -475,6 +472,7 @@ export class ChartComponent implements OnInit, OnDestroy {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             });
 
+        // Begin adding fields to the node
         // Color the nodes based on the node color property
         nodeEnter.append("rect")
             .attr("width", this.rectW)
@@ -526,7 +524,25 @@ export class ChartComponent implements OnInit, OnDestroy {
             .attr("y", this.rectH / 5)
             .style("text-anchor", "start")
             .text(function (d: any) {
-                return d.issueTitle;
+                if (d.issueTitle.length > 25) {
+                    let trimmed = d.issueTitle.substring(0, 20) + "...";
+                    return trimmed;
+                }
+                else {
+                    return d.issueTitle;
+                }
+            }).on("mouseover", function (d: any) { // Adds tooltip for issue titles
+                div.transition()
+                    .duration(200)
+                    .style("opacity", 1);
+                div.html("Priority: " + d.issueTitle)
+                    .style("left", ((<any>d3.event).pageX) + "px")
+                    .style("top", ((<any>d3.event).pageY - 28) + "px");
+            })
+            .on("mouseout", function (d: any) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
 
         // adds node id label to the node
@@ -675,6 +691,8 @@ export class ChartComponent implements OnInit, OnDestroy {
             .append("xhtml:span")
             .attr("class", 'control glyphicon glyphicon-plus');
 
+        // End adding fields to node
+
         // Add circle showing drop area for nodes
         nodeEnter.append("circle")
             .attr('class', 'ghostCircle')
@@ -743,17 +761,17 @@ export class ChartComponent implements OnInit, OnDestroy {
         // Transition exiting nodes to the parent's new position.
         link.exit().transition()
             .duration(this.duration)
-            .attr("d", (d:any) => {
+            .attr("d", (d: any) => {
                 /* This is needed to draw the lines right back to the caller */
-                let u_line = ((d:any) => {
-                    let u_linedata = [{ "x": this.callerNode.x + (this.rectW / 2), "y": this.callerNode.y + this.rectH + 2 },
-                        { "x": this.callerNode.x + (this.rectW / 2), "y": this.callerNode.y + this.rectH + 2 },
-                        { "x": this.callerNode.x + (this.rectW / 2), "y": this.callerNode.y + this.rectH + 2 },
-                        { "x": this.callerNode.x + (this.rectW / 2), "y": this.callerNode.y + this.rectH + 2 }];
+                let u_line = ((d: any) => {
+                    let u_linedata = [{ "x": d.source.x + (this.rectW / 2), "y": d.source.y + this.rectH + 2 },
+                        { "x": d.source.x + (this.rectW / 2), "y": d.source.y + this.rectH + 2 },
+                        { "x": d.source.x + (this.rectW / 2), "y": d.source.y + this.rectH + 2 },
+                        { "x": d.source.x + (this.rectW / 2), "y": d.source.y + this.rectH + 2 }];
                     return u_linedata;
                 })(d);
                 return this.lineFunction(u_line);
-            }).each("end", () => { this.callerNode = null; /* After transition clear the caller node variable */ });
+            }).remove();
 
         // Stash the old positions for transition.
         this.nodes.forEach(function (d:any) {
@@ -809,5 +827,19 @@ export class ChartComponent implements OnInit, OnDestroy {
 
         this.update(this.root);
         this.centerNode(this.root);
+    };
+
+    // Refresh tree after initialization
+    performTreeRefresh(updateData: any): void {
+
+        // Assign data to root
+        this.root = updateData;
+
+        // Set position of root
+        this.root.x0 = (this.viewerWidth / 2) - this.rectW / 2;
+        this.root.y0 = this.viewerHeight / 4;
+
+        this.update(this.root);
+        this.centerNode(this.lastInteractedNode);
     };
 }

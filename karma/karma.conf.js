@@ -5,6 +5,7 @@ module.exports = config => {
         autoWatch: true,
         browsers: ['Chrome'],
         files: [
+            '../node_modules/jquery/dist/jquery.min.js',
             '../node_modules/es6-shim/es6-shim.min.js',
             'karma.entry.js'
         ],
