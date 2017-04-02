@@ -25,11 +25,15 @@ export class ProjectThumbnailComponent {
     this.modalChild.editProject(this.project.projectId);
     }
 
-    titleFormat(projectName: String, length: number) {
-        if (projectName.length > length) {
-            return projectName.substr(0, length) + "...";
+    titleFormat(title: String, length: number) {
+        if (title !== null) {
+            if (title.length > length) {
+                return title.substr(0, length) + "...";
+            } else {
+                return title;
+            }
         } else {
-            return projectName;
+            return title;
         }
     }
 }

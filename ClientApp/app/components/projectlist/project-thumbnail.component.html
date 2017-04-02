@@ -2,9 +2,9 @@
     <project-modal-component></project-modal-component>
     <span class="glyphicon glyphicon-pencil" title="Edit Project" (click)="this.editProject()"></span>
     <h3>
-        <a routerLink="/project/{{project.projectId}}" style="color: #000000">
-            {{project.projectId}} - {{this.titleFormat(project.projectTitle, 150)}}
+        <a routerLink="/project/{{project.projectId}}" style="color: #000000" title="{{project.projectTitle}}">
+            {{project.projectId}} - {{this.titleFormat(project.projectTitle, 50)}}
         </a>
     </h3>
-    <h5>{{project.projectDescription}}</h5>
+    <h5>{{this.titleFormat(project.projectDescription, 400)}}</h5>
 </div>
