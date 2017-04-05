@@ -7,7 +7,7 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { TreeModalComponent } from './components/Modal/modal.component';
+import { TreeModalComponent } from './components/modal/modal.component';
 import { ProjectListComponent } from './components/projectlist/projectlist.component';
 import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
 import { ProjectListService } from './components/projectlist/projectlist-service';
