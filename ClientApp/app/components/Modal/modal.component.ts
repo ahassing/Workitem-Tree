@@ -78,7 +78,7 @@ export class TreeModalComponent implements OnInit  {
         {
             this.modalService.createIssue(this.model).subscribe(() => { this.saveComplete() });
         } 
-        this.saveComplete();
+        //this.saveComplete();
     }
     dismissed() {
         this.output = '(dismissed)';
@@ -102,6 +102,11 @@ export class TreeModalComponent implements OnInit  {
         this.modalTitle = 'Edit';
         this.open();
     }
+
+    reparent(id: number, dependentOn: number) {
+        this.modalService.reparentIssue(id, dependentOn).subscribe(() => { this.saveComplete() });
+    }
+
     // called to open the modal dialog
     open() {
         this.modal.open();
