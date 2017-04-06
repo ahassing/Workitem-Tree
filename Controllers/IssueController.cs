@@ -49,6 +49,11 @@ namespace Feature_Tree.Controllers
         {
             _BTfeatureTreeRepository.UpdateIssue(value);
         }
+        [HttpPut("reparent/{id}/{dependentOn}")]
+        public void Reparent(int id, int dependentOn )
+        {
+            _BTfeatureTreeRepository.ReparentIssue(id,dependentOn);
+        }
 
     }
 }

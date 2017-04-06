@@ -46,6 +46,14 @@ namespace Feature_Tree.DataRepository
             return issue;
         }
 
+        public int ReparentIssue(int id, int dependentOn)
+        {
+            var issue = new Issue { IssueId = id, DependentOn = dependentOn };
+            _dbContext.Issues.Attach(issue);
+            _dbContext.Entry(issue).Property(x => x.DependentOn).IsModified = true;
+            return _dbContext.SaveChanges();
+        }
+
         public Issue CreateIssue(Issue value)
         {
             value.IssueCreatorUserId = value.IssueAssignedUserId;
@@ -59,6 +67,7 @@ namespace Feature_Tree.DataRepository
 
             return null;
         }
+
 
     }
 }

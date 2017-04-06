@@ -42,6 +42,13 @@ export class ModalService {
             
     }
 
+    reparentIssue(id: number, dependentOn: number): Observable<Response> {
+        let headers = new Headers({ 'Content-Length': '0'});
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put('api/issue/reparent/' + id + '/' + dependentOn, options);
+    }
+
     createIssue(issue: Issue): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

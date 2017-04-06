@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import 'bootstrap';
-import { TreeModalComponent } from '../Modal/modal.component';
+import { TreeModalComponent } from '../modal/modal.component';
 import { TreeNode } from "./tree-node";
 import { TreeNodeService } from './tree-node.service';
 import { Project } from '../projectlist/project';
@@ -391,11 +391,14 @@ export class ChartComponent implements OnInit, OnDestroy {
                     self.selectedNode.children = [];
                     self.selectedNode.children.push(self.draggingNode);
                 }
+                self.myChild.reparent(self.draggingNode.issueId, self.selectedNode.issueId);
                 // Make sure that the node being added to is expanded so user can see added node is correctly moved
                 self.expand(self.selectedNode);
                 self.sortTree();
 
                 self.endDrag();
+
+             
 
             }
             // If the node is dropped into white space then it doesn't get inserted into anything and
