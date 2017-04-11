@@ -5,8 +5,11 @@
     userName: string;
     issueDescription: string;
     priorityName: string;
+    priorityImage: string;
     statusName: string;
+    statusImage: string;
     typeName: string;
+    typeImage: string;
     statusCatName: string;
     statusCatColor: string;
     userAvatarPath: string;

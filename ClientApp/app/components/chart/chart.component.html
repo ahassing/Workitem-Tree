@@ -1,5 +1,15 @@
 ﻿<!-- This div holds the feature tree -->
+<!--<div class="panel panel-default">
+    <div class="panel-heading">
+         <h3 class="panel-title">{{projectId}} | {{projectTitle}}</h3><button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Add</button>
+    </div>
+    <div class="panel-body">-->
 
-<div id="canvas">
-    <modal-component></modal-component>
-</div>
+<!--ngIf ensures that the title does not load before the chart does.-->
+<h2 *ngIf="treeHasLoaded">{{projectId}} | {{projectTitle}} <button type="button" class="btn btn-secondary btn-sm" (click)="this.refresh()"><span id="refreshGlyph" class="glyphicon glyphicon-refresh"></span></button></h2>
+
+        <div id="canvas">
+            <modal-component (refreshData)="this.refresh($event)"></modal-component>
+        </div>
+    <!--</div>-->
+

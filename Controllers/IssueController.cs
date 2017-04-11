@@ -22,31 +22,37 @@ namespace Feature_Tree.Controllers
         {
             _BTfeatureTreeRepository = BTfeatureTreeRepository;
         }
-        // GET: api/values
+        // GET: api/issue
         [HttpGet]
         public IEnumerable<Issue> Get()
         {
             return _BTfeatureTreeRepository.ListAll();
         }
 
-        // GET api/values/5
+        // GET api/issue/5
         [HttpGet("{id}")]
         public Issue Get(int id)
         {
             return _BTfeatureTreeRepository.GetIssue(id);
         }
 
-        // POST api/values
+        // POST api/issue
         [HttpPost]
         public void Post([FromBody]Issue value)
         {
             _BTfeatureTreeRepository.CreateIssue(value);
         }
 
-        // PUT api/values/5
+        // PUT api/issue/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Issue value)
         {
+            _BTfeatureTreeRepository.UpdateIssue(value);
+        }
+        [HttpPut("reparent/{id}/{dependentOn}")]
+        public void Reparent(int id, int dependentOn )
+        {
+            _BTfeatureTreeRepository.ReparentIssue(id,dependentOn);
         }
 
     }

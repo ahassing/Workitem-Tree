@@ -10,6 +10,9 @@ namespace Feature_Tree.IDataRepository
     {
         IEnumerable<Issue> ListAll();
         Issue GetIssue(int id);
+        int UpdateIssue(Issue issue);
         Issue CreateIssue(Issue issues);
+
+        int ReparentIssue(int id, int dependentOn);
     }
 }

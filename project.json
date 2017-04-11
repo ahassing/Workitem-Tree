@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.1",
+      // Downgraded from 1.0.1 to try and deploy to Heroku
+      "version": "1.0.0",
       "type": "platform"
     },
     "Microsoft.AspNetCore.AngularServices": "1.0.0-*",

@@ -21,7 +21,7 @@ namespace Feature_Tree.DataRepository
             _dbContext = dbContext;
         }
 
-        public Node GetTree(int projectId)
+        public List<Node> GetTree(int projectId)
         {
             List <Node> nodes = new List<Node>();
          var issues = from issue in _dbContext.Issues
@@ -45,7 +45,10 @@ namespace Feature_Tree.DataRepository
                           UserName = user.UserName,
                           UserAvatarPath = user.UserImagePath,
                           StatusName = status.StatusName,
-                          PriorityName = priority.PriorityName
+                          PriorityName = priority.PriorityName,
+                          PriorityImage = priority.PriorityImage,
+                          TypeImage = issueType.TypeImage,
+                          StatusImage = status.StatusImage
                       };
 
             var config = new MapperConfiguration(cfg => cfg.CreateMissingTypeMaps = true);
@@ -53,14 +56,14 @@ namespace Feature_Tree.DataRepository
 
             var nodeList = issues.Select(mapper.Map<Node>).ToList();
 
-           Node rootNode = MakeTreeFromFlatList(nodeList);
+           List<Node> rootNode = MakeTreeFromFlatList(nodeList);
 
 
 
             return rootNode;
         }
 
-        public Node MakeTreeFromFlatList(IEnumerable<Node> list) {
+        public List<Node> MakeTreeFromFlatList(IEnumerable<Node> list) {
 
             var dic = list.ToDictionary(n => n.IssueId, n => n);
             var rootNodes = new List<Node>();
@@ -75,7 +78,7 @@ namespace Feature_Tree.DataRepository
                 }
             }
 
-            return rootNodes.FirstOrDefault();
+            return rootNodes;
         }
 
     }

@@ -40,6 +40,8 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
 * Issues: 
     * GET api/issue/\{Id}
     * GET api/issue/
+    * PUT api/issue/\{Id} + Issue object
+    * POST api/issue/ + Issue object
 * Users:
     * GET api/user/
     * GET api/user/851B90E1-36AD-4C73-ADC7-9C4A1745DA54
@@ -57,4 +59,7 @@ Schema Changes (When connected to jmknust-proj.database.windows.net)
     * GET api/project/\{Id}
 * Tree
     * GET api/tree/\{ProjectId}
+* IssueType
+    * GET api/type/
+    * GET api/type/\{Id}
 

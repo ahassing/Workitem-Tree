@@ -31,7 +31,7 @@ namespace Feature_Tree.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Node Get(int id)
+        public List<Node> Get(int id)
         {
             return _BTfeatureTreeRepository.GetTree(id);
         }

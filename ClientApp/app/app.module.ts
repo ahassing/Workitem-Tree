@@ -7,11 +7,12 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { EditModalComponent } from './components/Modal/modal.component';
+import { TreeModalComponent } from './components/modal/modal.component';
 import { ProjectListComponent } from './components/projectlist/projectlist.component';
 import { ProjectThumbnailComponent } from './components/projectlist/project-thumbnail.component';
 import { ProjectListService } from './components/projectlist/projectlist-service';
 import { ModalService } from './components/modal/modal.service';
+import { ProjectModalComponent } from './components/project-modal/project-modal.component';
 
 
 @NgModule({
@@ -23,14 +24,15 @@ import { ModalService } from './components/modal/modal.service';
         HomeComponent,
         ProjectListComponent,
         ProjectThumbnailComponent,
-        EditModalComponent
+        TreeModalComponent, 
+        ProjectModalComponent
     ],
     providers: [ProjectListService],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'modalTest', component: EditModalComponent },
+            { path: 'modalTest', component: TreeModalComponent },
             { path: 'home', component: HomeComponent },
             { path: 'project/:id', component: ChartComponent },
             { path: '**', redirectTo: 'home' }
